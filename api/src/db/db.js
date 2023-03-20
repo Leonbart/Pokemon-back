@@ -3,6 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const storeTypesFromAPItoDB = require('./storeTypesFromAPItoDB.js');
 
 const sequelize = new Sequelize(
    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
@@ -45,6 +46,11 @@ const { Pokemon, Type } = sequelize.models;
 // Product.hasMany(Reviews);
 Pokemon.belongsToMany(Type, { through: 'Pokemons-Types' });
 Type.belongsToMany(Pokemon, { through: 'Pokemons-Types' });
+
+
+// Get all pokemon's types from API and store them in DB
+storeTypesFromAPItoDB(Type)
+   // .then((data) => console.log(data.map(t => t.toJSON().name)));
 
 module.exports = {
    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

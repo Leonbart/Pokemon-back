@@ -23,6 +23,6 @@ const { conn } = require('./src/db/db.js');
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
-    console.log('Local API Listening at 3001'); // eslint-disable-line no-console
+    console.log('Local DB API Listening at 3001'); // eslint-disable-line no-console
   });
 });

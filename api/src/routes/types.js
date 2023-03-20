@@ -1,11 +1,11 @@
 const { Router } = require("express");
-const { Types } = require("../db/db.js");
+const { Type } = require("../db/db.js");
 const typeRouter = Router();
 
 // Get all pokemon types from database
 typeRouter.get('/', async (req, res) => {
     try {
-        const types = await Types.findAll();
+        const types = await Type.findAll();
 
         if (types) return res.status(200).json(types)
         else return res.status(404).send('No types found in database');
@@ -22,7 +22,7 @@ typeRouter.post('/', async (req, res) => {
         const { name } = req.body;
         if (!name) return res.status(400).send("Type's name must be provided");        
         
-        const newType = await Types.create({ name });
+        const newType = await Type.create({ name });
         return res.status(200).json(newType);
     }
     catch (error) {
