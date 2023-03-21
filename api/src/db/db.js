@@ -44,8 +44,8 @@ const { Pokemon, Type } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Pokemon.belongsToMany(Type, { through: 'Pokemons-Types' });
-Type.belongsToMany(Pokemon, { through: 'Pokemons-Types' });
+Pokemon.belongsToMany(Type, { through: 'pokemons-types' });
+Type.belongsToMany(Pokemon, { through: 'pokemons-types' });
 
 
 // Get all pokemon's types from API and store them in DB
