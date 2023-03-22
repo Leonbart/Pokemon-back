@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from './Button.jsx';
 import styles from './LandingPage.module.css';
 import logo from '../assets/logos/Pokemon-01.svg';
@@ -12,7 +13,9 @@ export default function LandingPage(props) {
             </div>
 
             <div className={styles.divButton}>
-                <Button text="Start" onClick={null} />
+                <Link to='/home'>
+                    <Button text="Start" onClick={null} />
+                </Link>
             </div>
         </div>
     );

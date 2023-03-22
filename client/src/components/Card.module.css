@@ -1,0 +1,88 @@
+.divCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    /* margin: auto; */
+    margin: 1rem 1rem;
+    background-color: whitesmoke;
+    /* box-shadow: 10px 10px 15px rgba(129, 129, 129, 0.5); */
+    box-shadow: 0 0 2rem rgba(231, 231, 231, 0.8);
+    border-radius: 0.5rem;
+}
+
+.divCard:hover {
+    transform: scale(1.05);
+    transition: transform 0.8s;
+    transition-delay: 0.1s;
+}
+
+.divButton {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.buttonFavorite {
+    margin: 0rem 1rem;
+    border-width: 0;
+    background-color: transparent;
+    font-size: 1.2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.buttonCloseCard {
+    margin: 0.3rem;
+    margin-right: 1rem;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: grey;
+    font-weight: 600;
+    color: beige;
+    background-color: crimson;
+}
+
+.buttonCloseCard:hover {
+    background-color: rgb(214, 98, 121);
+}
+
+.divImgContainer {
+    position: relative;
+    width: 100%;
+}
+
+.imgCard {
+    width: 100%;
+}
+
+.nameContainer {
+    margin: auto;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: black;
+    opacity: 0.80;
+    padding: 0.5rem 1rem;
+}
+
+.name {
+    margin: auto;
+    color: white;
+    font-weight: 600;
+}
+
+.divSpecs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 1rem;
+    /* padding: 1rem; */
+    font-weight: 400;
+    font-size: larger;
+}
+
+.pSpecs {
+    margin: 0.3rem;
+}
