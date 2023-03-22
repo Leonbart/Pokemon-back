@@ -7,7 +7,7 @@ const initialState = {
 
 function rootReducer(state = initialState, { type, payload }) {
     switch (type) {
-        case ADD_POKEMON:  // Add a pokemon to allPokemons
+        case ADD_POKEMON:  // Add a pokemon to allPokemons state
             return {
                 ...state,
                 allPokemons: [...state.allPokemons, payload],
