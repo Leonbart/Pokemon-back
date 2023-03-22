@@ -1,11 +1,13 @@
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import Nav from './components/Nav.jsx';
+import LandingPage from './components/LandingPage.jsx';
 
 function App() {
   let location = useLocation();
 
   return (
-    <div className='App' style={{ padding: '25px' }}>
+    <div className='App'>
       {/* Nav bar is not shown on landing page */}
       {location.pathname === '/' ? null : <Nav />}
       <Routes>

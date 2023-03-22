@@ -1,1 +1,2 @@
 1. BACK: create route controllers
+2. BACK: Refactor types initial loading from API to DB
