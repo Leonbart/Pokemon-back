@@ -1,12 +1,17 @@
 const { Router } = require("express");
 const { Pokemon, Type } = require("../db/db.js");
+const axios = require('axios');
+
 const pokemonRouter = Router();
 
-// Get pokemon by name from database
+// Get pokemon by name from API and database
 // (using req queries - GET | /pokemons/name?name="...")
 pokemonRouter.get('/name', async (req, res) => {
     try {
         const { name } = req.query;
+
+        // TODO: GET POKEMONS FROM API
+
         const pokemon = await Pokemon.findOne({
             where: {
                 name
@@ -21,11 +26,14 @@ pokemonRouter.get('/name', async (req, res) => {
     }
 });
 
-// Get pokemon by id from database
+// Get pokemon by id from API and database
 // (using req params - GET | /pokemons/:idPokemon)
 pokemonRouter.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
+        
+        // TODO: GET POKEMONS FROM API
+        
         const pokemon = await Pokemon.findByPk(id);
         
         if (pokemon) return res.status(200).json(pokemon)
@@ -36,10 +44,23 @@ pokemonRouter.get('/:id', async (req, res) => {
     }
 });
 
-// Get all pokemons from database
+// Get all pokemons from API and database
 pokemonRouter.get('/', async (req, res) => {
   try {
-    const pokemons = await Pokemon.findAll();
+    let pokemons = [];
+
+    // Get pokemons from API into pokemons array
+    const data = await (await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1008')).data;   // get all 1008 pokemons
+    let pokesFromAPI = data.results;
+
+
+    console.log('-------------------------')
+    console.log('-------------------------')
+    console.log(pokesFromAPI);
+    console.log('-------------------------')
+    console.log('-------------------------')
+
+    const pokemonss = await Pokemon.findAll();
 
     if (pokemons) return res.status(200).json(pokemons)
     else return res.status(404).send('No pokemons found in database');

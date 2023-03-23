@@ -1,28 +1,32 @@
 import styles from './Cards.module.css';
 import Card from './Card';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-// import * as actions from '../redux/actions/index.js';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../redux/actions/index.js';
 
-export default function Cards(props) {
-   const { characters } = props;
+export default function Cards() {
+   const selectedPokemons = useSelector(state => state.selectedPokemons);
    const dispatch = useDispatch();
 
    useEffect(() => {
+      dispatch(actions.getPokemons());
    }, []);
 
    return (
       <div className={styles.divCards}>
-         {/* {characters.map((elem, index) =>
+         {selectedPokemons.map((elem, index) =>
             <Card
                key={index}
                id={elem.id}
                name={elem.name}
-               species={elem.species}
-               gender={elem.gender}
                image={elem.image}
-               onClose={props.onClose}
-            />)} */}
+               hp={elem.hp}
+               attack={elem.attack}
+               defense={elem.defense}
+               speed={elem.speed}
+               height={elem.height}
+               weight={elem.weight}
+            />)}
       </div>
    )
 }

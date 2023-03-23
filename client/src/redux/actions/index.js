@@ -18,70 +18,33 @@ export function addPokemon(poke) {
 }
 
 
-export function deleteFavorite(id) {
-    return async function (dispatch) {
-        try {
-            await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
-            dispatch({
-                type: DELETE_FAVORITE,
-                payload: id,
-            });
-        } catch (error) {
-            // By design when a card is closed, it is removed from favorites without checking if it was a favorite. So console.log but don't throw an error.
-            console.log(error);
-            // throw new Error(error);
-        }
-    };
-}
-
+// export function filterCards(gender) {
 //     return {
-//         type: DELETE_FAVORITE,
-//         payload: id
+//         type: FILTER,
+//         payload: gender,
+//     }
+// }
+// export function orderCards(order) { // order --> 'ASC' or 'DESC'
+//     return {
+//         type: ORDER,
+//         payload: order,
+//     }
+// }
+// export function resetFavFilters() {
+//     return {
+//         type: RESET_FAV_FILTERS,
+//         // payload: '',
 //     }
 // }
 
-export function deleteFavorites() {
+export function getPokemons() {
     return async function (dispatch) {
         try {
-            await axios.delete(`http://localhost:3001/rickandmorty/fav/`);
-            dispatch({
-                type: DELETE_FAVORITES,
-                // payload: id,
-            });
-        } catch (error) {
-            throw new Error(error);
-        }
-    };
-}
-
-
-export function filterCards(gender) {
-    return {
-        type: FILTER,
-        payload: gender,
-    }
-}
-export function orderCards(order) { // order --> 'ASC' or 'DESC'
-    return {
-        type: ORDER,
-        payload: order,
-    }
-}
-export function resetFavFilters() {
-    return {
-        type: RESET_FAV_FILTERS,
-        // payload: '',
-    }
-}
-
-export function getFavorites() {
-    return async function (dispatch) {
-        try {
-            let favsFromBackEnd = await (await axios.get(`http://localhost:3001/rickandmorty/fav`)).data;
+            let PokesFromBackend = await (await axios.get(`http://localhost:3001/pokemons`)).data;
 
             dispatch({
-                type: GET_FAVORITES,
-                payload: favsFromBackEnd,
+                type: GET_POKEMONS,
+                payload: PokesFromBackend,
             });
         } catch (error) {
             throw new Error(error);
