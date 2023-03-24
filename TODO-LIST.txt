@@ -1,5 +1,5 @@
-1. BACK: create route controllers
+DONE ---- 1. BACK: create route controllers
 2. BACK: Refactor types initial loading from API to DB
 3. FRONT: store backend host and port in .env and use them in redux actions
 
-Finish express route pokemonRouter.get('/')  // Get pokemons from API into pokemons array
+Finish express routes to get by id and name both from DB and API
