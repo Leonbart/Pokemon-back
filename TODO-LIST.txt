@@ -1,5 +1,23 @@
 DONE ---- 1. BACK: create route controllers
-2. BACK: Refactor types initial loading from API to DB
-3. FRONT: store backend host and port in .env and use them in redux actions
+2. FRONT: Update card look and feel to show properties (Image, id, name, types)
+3. FRONT: Search pokemon by name or id
+4. FRONT: Filter by type and source (store filter and order parameters in redux states)
+5. FRONT: Order by name or attack (ascending or descending).
+6. FRONT: Paging (12 pokemons per page)
+7. FRONT: Detail page (with all pokemon properties)
+8. FRONT: Form page to create new pokemon on DB (and redux states)
 
 Finish express routes to get by id and name both from DB and API
+
+
+
+
+
+
+
+
+If there's time (before PI presentation due date on April, 10th):
+200. FRONT: store backend host and port in .env and use them in redux actions
+201. BACK: Refactor initial loading of pokemon's types from API to DB (now it is done on db.js with the funcion storeTypesFromAPItoDB(Type) and maybe it should be in index.js after synchronizing the models and before starting the server).
+202. BACK: Testing.
+203. FRONT: Testing.

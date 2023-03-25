@@ -20,12 +20,12 @@ export default function Cards() {
                id={elem.id}
                name={elem.name}
                image={elem.image}
-               hp={elem.hp}
-               attack={elem.attack}
-               defense={elem.defense}
-               speed={elem.speed}
-               height={elem.height}
-               weight={elem.weight}
+               // hp={elem.hp}
+               // attack={elem.attack}
+               // defense={elem.defense}
+               // speed={elem.speed}
+               // height={elem.height}
+               // weight={elem.weight}
             />)}
       </div>
    )
