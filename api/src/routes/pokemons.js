@@ -17,6 +17,7 @@ pokemonRouter.get('/name', getPokemonByName);
 pokemonRouter.get('/:id', getPokemonById);
 
 // Get all pokemons from API and database
+// (using req query ?source)
 pokemonRouter.get('/', getAllPokemons);
 
 
