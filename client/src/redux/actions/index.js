@@ -1,4 +1,4 @@
-import { ADD_POKEMON, ADD_POKEMONS, FILTER, ORDER, RESET_FILTERS, GET_POKEMONS } from "./types";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, ADD_POKEMONS, FILTER, ORDER, RESET_FILTERS, GET_POKEMONS } from "./types";
 import axios from 'axios';
 
 export function addPokemon(poke) {
@@ -17,7 +17,6 @@ export function addPokemon(poke) {
     }
 }
 
-
 // export function filterCards(gender) {
 //     return {
 //         type: FILTER,
@@ -30,12 +29,28 @@ export function addPokemon(poke) {
 //         payload: order,
 //     }
 // }
+
 // export function resetFavFilters() {
 //     return {
 //         type: RESET_FAV_FILTERS,
 //         // payload: '',
 //     }
 // }
+
+
+export function searchPokemonByName(name) {
+    return {
+        type: SEARCH_POKEMON_BY_NAME,
+        payload: name,
+    }
+}
+
+export function searchPokemonById(id) {
+    return {
+        type: SEARCH_POKEMON_BY_ID,
+        payload: id,
+    }
+}
 
 export function getPokemons() {
     return async function (dispatch) {

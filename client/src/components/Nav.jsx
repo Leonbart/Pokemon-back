@@ -4,7 +4,7 @@ import styles from './Nav.module.css';
 import logo from '../assets/logos/Pokemon-01.svg';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function Nav(props) {
+export default function Nav() {
 
     let location = useLocation();
 
@@ -23,9 +23,7 @@ export default function Nav(props) {
             </div>
             <div className={styles.divSearchBar}>
                 {location.pathname === '/home' ? 
-                <SearchBar
-                    onSearch={props.onSearch}
-                /> : null
+                <SearchBar /> : null
                 }
             </div>
         </div>

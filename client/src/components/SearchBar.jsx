@@ -1,13 +1,22 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './SearchBar.module.css';
 import Button from './Button';
+import {searchPokemonByName, searchPokemonById} from '../redux/actions/index.js'
 
-export default function SearchBar(props) {
+export default function SearchBar() {
+   const [pokeIDorName, setpokeIDorName] = useState('');
+   const dispatch = useDispatch();
 
-   const [characterID, setCharacterID] = useState('');
+   const isIDorName = (val) => {
+      // if val has any number, return 'id'
+      // in any other case, return 'name'
+      if (/\d/.test(val)) return ('id')
+      else return ('name');
+   };
 
    const handleChange = (e) => {
-      setCharacterID(e.target.value);
+      setpokeIDorName(e.target.value);
    };
 
 
@@ -16,22 +25,20 @@ export default function SearchBar(props) {
          <input
             className={styles.input}
             type='search'
-            placeholder='Character ID...'
-            value={characterID}
+            placeholder='id or name...'
+            value={pokeIDorName}
             onChange={handleChange}
          />
          <Button
-            text='Add'
+            text='Search'
             onClick={() => {
-               props.onSearch(characterID);
-               setCharacterID('');
-            }}
-         />
-         <Button
-            text='Add Random'
-            onClick={() => {
-               props.onSearch(Math.floor(Math.random() * 826 + 1))
-               setCharacterID('');
+               if (pokeIDorName !== '') {
+                  // Check if Id or Name to choose the action to dispatch
+                  if (isIDorName(pokeIDorName) === 'name') dispatch(searchPokemonByName(pokeIDorName.toLocaleLowerCase()))
+                  else if (isIDorName(pokeIDorName) === 'id') dispatch(searchPokemonById(pokeIDorName.toLocaleLowerCase()));
+
+                  setpokeIDorName('');
+               }
             }}
          />
       </div>

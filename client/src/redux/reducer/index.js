@@ -1,6 +1,8 @@
-import { ADD_POKEMON, ADD_POKEMONS, FILTER, ORDER, RESET_FILTERS, GET_POKEMONS } from "../actions/types.js";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, ADD_POKEMONS, FILTER, ORDER, RESET_FILTERS, GET_POKEMONS } from "../actions/types.js";
 
 const initialState = {
+    // pokeIdToSearch: '',     // id of the searched pokemon
+    // pokeNameToSearch: '',   // name of the searched pokemon
     selectedPokemons: [],   // Selected pokemons to display
     allPokemons: [],        // All pokemons
 };
@@ -11,6 +13,12 @@ function rootReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 allPokemons: [...state.allPokemons, payload],
+            }
+        case SEARCH_POKEMON_BY_NAME:
+            const pokemon = state.allPokemons.find(p => (p.name === payload));
+            return {
+                ...state,
+                selectedPokemons: [pokemon]
             }
         // case DELETE_FAVORITE:   // Delete a character from selectedFavorites and allFavorites
         //     const newFarorites = state.selectedFavorites.filter(
