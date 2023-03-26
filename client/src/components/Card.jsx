@@ -3,8 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export default function Card(props) {
-
    let location = useLocation();
+
+   // store in types an array of html span tags for each pokemon's type (to be rendered in the card specs)
+   const types = props.types.map((t) => <span className={styles.specs}>{t}</span>);
 
    // useEffect(() => {
    // }, []);
@@ -16,7 +18,12 @@ export default function Card(props) {
             <img className={styles.imgCard} src={props.image} alt="img not found" />
          </div>
 
-         {/* Name and Id */}
+         {/* Id */}
+         <div className={styles.idContainer}>
+            <div className={styles.id}> #{props.id}</div>
+         </div>
+
+         {/* Name */}
          <div className={styles.nameContainer}>
             {/* <Link to={`/detail/${props.id}`} style={{ textDecoration: 'none' }}> */}
             <div className={styles.name}> {props.name}</div>
@@ -25,10 +32,7 @@ export default function Card(props) {
 
          {/* Specs */}
          <div className={styles.divSpecs}>
-            {/* {console.log(props)} */}
-            <span className={styles.specs}>{props.id}</span>
-            <span className={styles.specs}>{props.attack}</span>
-            <span className={styles.specs}>{props.defense}</span>
+            {types}
          </div>
       </div>
    );

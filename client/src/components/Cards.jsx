@@ -20,6 +20,7 @@ export default function Cards() {
                id={elem.id}
                name={elem.name}
                image={elem.image}
+               types={elem.types}
                // hp={elem.hp}
                // attack={elem.attack}
                // defense={elem.defense}

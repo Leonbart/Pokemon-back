@@ -1,5 +1,5 @@
 DONE ---- 1. BACK: create route controllers
-2. FRONT: Update card look and feel to show properties (Image, id, name, types)
+DONE ---- 2. FRONT: Update card look and feel to show properties (Image, id, name, types)
 3. FRONT: Search pokemon by name or id
 4. FRONT: Filter by type and source (store filter and order parameters in redux states)
 5. FRONT: Order by name or attack (ascending or descending).

@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { POKEMONS_COUNT } = process.env;
-const { Pokemon } = require("../db/db.js");
+const { Pokemon, Type } = require("../db/db.js");
 const axios = require('axios');
 
 const getAllPokemons = async (req, res) => {
@@ -14,7 +14,7 @@ const getAllPokemons = async (req, res) => {
         else if (Number(req.query.source) === 1) fromAPI = false;
 
 
-        // Get pokemons from API and put then into pokemons array
+        // Get pokemons from API and put them into pokemons array
         //      create an array of promises to get each pokemon from API
         if (fromAPI) {
             let requestPromises = [];
@@ -44,8 +44,28 @@ const getAllPokemons = async (req, res) => {
 
         // Get pokemons from DB and push then into pokemons array
         if (fromDB) {
-            let pokesFromDB = await Pokemon.findAll();
-            pokesFromDB.forEach(p => pokemons.push(p.toJSON()));
+            let pokesFromDB = await Pokemon.findAll({
+                include: [
+                    {
+                        model: Type,
+                        attributes: ['name'],
+                        through: {
+                            attributes: [],
+                        },
+                    },
+                ],
+            });
+
+            // pokesFromDB.forEach(p => pokemons.push(p.toJSON()));
+            pokesFromDB.forEach(p => {
+                // the 'types' attribute comes (from eager association loading) as an array of objects. Transform it to an array of strings
+                let typesAsStrings = p.types.map(t => t.name);
+
+                let p2 = p.toJSON();
+                p2.types = typesAsStrings;
+
+                pokemons.push(p2);
+            });
         }
 
         if (pokemons) return res.status(200).json(pokemons)

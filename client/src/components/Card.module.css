@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20rem;
+    width: 14rem;
     /* margin: auto; */
     margin: 1rem 1rem;
     background-color: whitesmoke;
@@ -18,42 +18,76 @@
 }
 
 .divImgContainer {
-    background-color: #b2b2b2;
+    background-color: #e8e8e8;
     position: relative;
     width: 100%;
+    border-radius: 0.5rem;
 }
 
 .imgCard {
     width: 100%;
 }
 
+.idContainer {
+    display: flex;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    height: 2rem;
+}
+
+.id {
+    position: relative;
+    padding-left: 1rem;
+    margin: 0;
+    color: grey;
+    font-weight: 500;
+    font-size: small;
+    text-align: left;
+}
+
 .nameContainer {
-    margin: auto;
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    background-color: black;
-    opacity: 0.80;
-    padding: 0.5rem 1rem;
+    display: flex;
+    margin: 0;
+    position: relative;
+    width: 100%;
 }
 
 .name {
     margin: auto;
-    color: white;
+    color: black;
+    margin: 0;
+    padding-left: 1rem;
     font-weight: 600;
+    font-size: larger;
+    text-transform: capitalize;
 }
 
 .divSpecs {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     width: 100%;
-    margin: 1rem;
-    /* padding: 1rem; */
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
     font-weight: 400;
     font-size: larger;
+    column-gap: 0.5rem;
 }
 
-.pSpecs {
-    margin: 0.3rem;
+.divSpecs > *:first-child {
+    margin-left: 1rem;
+  }
+
+.specs {
+    padding: 0.2rem;
+    width: 4rem;
+    color:whitesmoke;
+    font-weight: 400;
+    font-size: x-small;
+    text-transform: capitalize;
+    background-color: cadetblue;
+    border-radius: 3px;
+    font-family: "Flexo-Medium",arial,sans-serif;
 }
