@@ -1,4 +1,4 @@
-import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, ADD_POKEMONS, FILTER, ORDER, RESET_FILTERS, GET_POKEMONS } from "../actions/types.js";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER, ORDER, RESET_FILTERS, GET_POKEMONS } from "../actions/types.js";
 
 const initialState = {
     // pokeIdToSearch: '',     // id of the searched pokemon
@@ -9,7 +9,7 @@ const initialState = {
 
 function rootReducer(state = initialState, { type, payload }) {
     switch (type) {
-        case ADD_POKEMON:  // Add a pokemon to allPokemons state (and backend)
+        case ADD_POKEMON:  // Add a pokemon to allPokemons state
             return {
                 ...state,
                 allPokemons: [...state.allPokemons, payload],

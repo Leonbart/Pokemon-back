@@ -1,12 +1,13 @@
-import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, ADD_POKEMONS, FILTER, ORDER, RESET_FILTERS, GET_POKEMONS } from "./types";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_POKEMONS_BY_TYPE, FILTER_POKEMONS_BY_SOURCE, ORDER_POKEMONS_BY_NAME, ORDER_POKEMONS_BY_ATTACK, RESET_POKEMONS_FILTERS, GET_POKEMONS } from "./types";
 import axios from 'axios';
 
 export function addPokemon(poke) {
     return async function (dispatch) {
         try {
-            // If a created pokemon, send it to DB
+            // Add created pokemon to DB
             const { data } = await axios.post('http://localhost:3001/pokemons', poke);
 
+            // Add created pokemon to store
             dispatch({
                 type: ADD_POKEMON,
                 payload: data,
