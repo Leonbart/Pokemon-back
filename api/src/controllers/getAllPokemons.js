@@ -37,7 +37,8 @@ const getAllPokemons = async (req, res) => {
                     speed: response.data.stats.find(stat => stat.stat.name === "speed").base_stat,
                     height: response.data.height,
                     weight: response.data.weight,
-                    types: types
+                    types: types,
+                    created: false,     // add a 'created' key and set it to false to mark that the pokemon was retrieved from API (not created)
                 })
             })
         }
@@ -63,6 +64,7 @@ const getAllPokemons = async (req, res) => {
 
                 let p2 = p.toJSON();
                 p2.types = typesAsStrings;
+                p2.created = true;     // add a 'created' key and set it to true to mark that the pokemon was retrieved from DB (where created pokemons are stored)
 
                 pokemons.push(p2);
             });
