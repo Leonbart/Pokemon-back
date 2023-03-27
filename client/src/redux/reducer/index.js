@@ -18,7 +18,13 @@ function rootReducer(state = initialState, { type, payload }) {
             const pokemon = state.allPokemons.find(p => (p.name === payload));
             return {
                 ...state,
-                selectedPokemons: [pokemon]
+                selectedPokemons: pokemon ? [pokemon] : []
+            }
+        case SEARCH_POKEMON_BY_ID:
+            const pokemon2 = state.allPokemons.find(p => (p.id.toString() === payload));
+            return {
+                ...state,
+                selectedPokemons: pokemon2 ? [pokemon2] : []
             }
         // case DELETE_FAVORITE:   // Delete a character from selectedFavorites and allFavorites
         //     const newFarorites = state.selectedFavorites.filter(

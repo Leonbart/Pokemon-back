@@ -1,9 +1,11 @@
 DONE ---- 1. BACK: create route controllers
 DONE ---- 2. FRONT: Update card look and feel to show properties (Image, id, name, types)
-3. FRONT: Search pokemon by name or id
+DONE ---- 3. FRONT: Search pokemon by name or id
     3.1: create redux actions and reducers
-    3.2: update react component (verify if id or name)
+    3.2: update react component (verify if the searched value is an id or a name)
 4. FRONT: Filter by type and source (store filter and order parameters in redux states)
+    4.1: create redux actions and reducers
+    4.2: add create a filter component and add it to the navbar.
 5. FRONT: Order by name or attack (ascending or descending).
 6. FRONT: Paging (12 pokemons per page)
 7. FRONT: Detail page (with all pokemon properties)
@@ -18,7 +20,7 @@ Finish express routes to get by id and name both from DB and API
 
 
 
-If there's time (before PI presentation due date on April, 10th):
+If there's time (before PI form presentation due date on April, 10th):
 200. FRONT: store backend host and port in .env and use them in redux actions
 201. BACK: Refactor initial loading of pokemon's types from API to DB (now it is done on db.js with the funcion storeTypesFromAPItoDB(Type) and maybe it should be in index.js after synchronizing the models and before starting the server).
 202. BACK: Testing.

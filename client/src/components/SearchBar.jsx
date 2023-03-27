@@ -5,7 +5,7 @@ import Button from './Button';
 import {searchPokemonByName, searchPokemonById} from '../redux/actions/index.js'
 
 export default function SearchBar() {
-   const [pokeIDorName, setpokeIDorName] = useState('');
+   const [pokeIDorName, setpokeIDorName] = useState(''); // contents of search input
    const dispatch = useDispatch();
 
    const isIDorName = (val) => {
@@ -34,8 +34,9 @@ export default function SearchBar() {
             onClick={() => {
                if (pokeIDorName !== '') {
                   // Check if Id or Name to choose the action to dispatch
-                  if (isIDorName(pokeIDorName) === 'name') dispatch(searchPokemonByName(pokeIDorName.toLocaleLowerCase()))
-                  else if (isIDorName(pokeIDorName) === 'id') dispatch(searchPokemonById(pokeIDorName.toLocaleLowerCase()));
+                  let nameOrId = isIDorName(pokeIDorName);
+                  if (nameOrId === 'name') dispatch(searchPokemonByName(pokeIDorName.toLocaleLowerCase()))
+                  else if (nameOrId === 'id') dispatch(searchPokemonById(pokeIDorName.toLocaleLowerCase()));
 
                   setpokeIDorName('');
                }

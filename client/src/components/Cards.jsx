@@ -15,7 +15,7 @@ export default function Cards() {
    return (
       <div className={styles.divCards}>
          {selectedPokemons.length === 0
-            ? <h1>NO POKÉMON MATCHED YOUR SEARCH</h1>
+            ? <h1 style={{color: 'red'}}>NO POKÉMON MATCHED YOUR SEARCH</h1>
             : selectedPokemons.map((elem, index) =>
                <Card
                   key={index}
