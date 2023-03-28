@@ -3,7 +3,7 @@ DONE ---- 2. FRONT: Update card look and feel to show properties (Image, id, nam
 DONE ---- 3. FRONT: Search pokemon by name or id
     3.1: create redux actions and reducers
     3.2: update react component (verify if the searched value is an id or a name)
-4. FRONT: Filter by type and source (don't store filter and order parameters in redux states, only changes in selectedPokemons state is importante to Cards.jsx)
+4. FRONT: Filter by type and source (don't store filter and order parameters in redux states, only changes in selectedPokemons state is important to Cards.jsx)
     4.1: create redux actions and reducers
     4.2: create a filter component and add it to the navbar.
 5. FRONT: Order by name or attack (ascending or descending).

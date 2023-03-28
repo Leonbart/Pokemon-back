@@ -1,5 +1,6 @@
 import SearchBar from './SearchBar.jsx';
 import Button from './Button';
+import Filtering from './Filtering.jsx';
 import styles from './Nav.module.css';
 import logo from '../assets/logos/Pokemon-01.svg';
 import { Link, useLocation } from 'react-router-dom';
@@ -20,6 +21,9 @@ export default function Nav() {
                 <Link to='/about'>
                     <Button text='about' />
                 </Link>
+            </div>
+            <div>
+                <Filtering />
             </div>
             <div className={styles.divSearchBar}>
                 {location.pathname === '/home' ? 
