@@ -1,15 +1,18 @@
 DONE ---- 1. BACK: create route controllers
 DONE ---- 2. FRONT: Update card look and feel to show properties (Image, id, name, types)
 DONE ---- 3. FRONT: Search pokemon by name or id
-    3.1: create redux actions and reducers
-    3.2: update react component (verify if the searched value is an id or a name)
-4. FRONT: Filter by type and source (don't store filter and order parameters in redux states, only changes in selectedPokemons state is important to Cards.jsx)
-    4.1: create redux actions and reducers
-    4.2: create a filter component and add it to the navbar.
-5. FRONT: Order by name or attack (ascending or descending).
-6. FRONT: Paging (12 pokemons per page)
-7. FRONT: Detail page (with all pokemon properties)
-8. FRONT: Form page to create new pokemon on DB (and redux states)
+DONE ----     3.1: create redux actions and reducers
+DONE ----     3.2: update react component (verify if the searched value is an id or a name)
+4. FRONT:   Filter by type and source 
+            Order by name or attack (asc-desc)
+            (don't store filter and order parameters in redux states, only changes in selectedPokemons state is important to Cards.jsx)
+DONE ----    4.1: create redux actions and reducers
+    4.2: create a filter component and add it to the navbar (Filtering.jsx).
+    4.3: code filtering logic in component.
+    4.4: code filtering logic in reducer.
+5. FRONT: Paging (12 pokemons per page)
+6. FRONT: Detail page (with all pokemon properties)
+7. FRONT: Form page to create new pokemon on DB (and redux states)
 
 Finish express routes to get by id and name both from DB and API
 

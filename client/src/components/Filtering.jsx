@@ -5,8 +5,7 @@ import * as actions from '../redux/actions/index.js';
 export default function Filtering() {
     const [selectedTypeFilter, setSelectedTypeFilter] = useState("all");
     const [selectedSourceFilter, setSelectedSourceFilter] = useState("all");
-    const [selectedNameOrder, setSelectedNameOrder] = useState("none");
-    const [selectedAttackOrder, setSelectedAttackOrder] = useState("none");
+    const [selectedOrder, setSelectedOrder] = useState("none");
 
     const types = useSelector(state => state.allTypeNames);
     const typesOptions = types.map((type, index) => <option key={index} value={type}>{type}</option>)
@@ -21,14 +20,21 @@ export default function Filtering() {
         setSelectedTypeFilter(typeFilter);
 
         dispatch(actions.filterAndOrder({
-            typeFilter: typeFilter,
-            sourceFilter: selectedSourceFilter,
-            nameOrder: selectedNameOrder,   // can be 'none'
-            attackOrder: selectedAttackOrder    // can be 'none'
+            typeFilter: typeFilter,             // can be 'all'
+            sourceFilter: selectedSourceFilter, // can be 'all'
+            Order: selectedOrder,               // can be 'none'
         }))
     };
 
-    useEffect(() => {
+    const handleSourceFilterChange = (e) => {
+        
+    };
+    
+    const handleOrderChange = (e) => {
+    
+    };
+
+        useEffect(() => {
         dispatch(actions.getTypes());
     }, []);
 
@@ -36,6 +42,7 @@ export default function Filtering() {
         // Ordering and Filtering
         <div
             className='divOrderFiltering'>
+            {/* FILTER BY TYPE */}
             <span>Type</span>
             <select className='selectOrderFilter'
                 name='type'
@@ -47,16 +54,33 @@ export default function Filtering() {
                 {typesOptions}
             </select>
 
+            {/* FILTER BY SOURCE */}
             <span>Source</span>
             <select
                 className='selectOrderFilter'
                 name='source'
                 value={selectedSourceFilter}
-                onChange={handleTypeFilterChange}
+                onChange={handleSourceFilterChange}
             >
                 <option value='all'>All</option>
                 <option value='pokédex'>pokédex</option>
                 <option value='created'>created</option>
+
+            </select>
+
+            {/* ORDER BY NAME OR ATTACK (ASC OR DESC) */}
+            <span>Order by</span>
+            <select
+                className='selectOrderFilter'
+                name='order'
+                value={selectedSourceFilter}
+                onChange={handleOrderChange}
+            >
+                <option value='none'>None</option>
+                <option value='name-asc'>name (ascending)</option>
+                <option value='name-desc'>name (descending)</option>
+                <option value='attack-asc'>attack (ascending)</option>
+                <option value='attack-desc'>attack (descending)</option>
             </select>
         </div>
     );
