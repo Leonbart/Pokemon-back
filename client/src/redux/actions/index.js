@@ -1,4 +1,4 @@
-import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_POKEMONS_BY_TYPE, FILTER_POKEMONS_BY_SOURCE, ORDER_POKEMONS_BY_NAME, ORDER_POKEMONS_BY_ATTACK, RESET_POKEMONS_FILTERS, GET_POKEMONS } from "./types";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_AND_ORDER_POKEMONS, RESET_POKEMONS_FILTERS, GET_POKEMONS, GET_TYPES } from "./types";
 import axios from 'axios';
 
 export function addPokemon(poke) {
@@ -18,26 +18,12 @@ export function addPokemon(poke) {
     }
 }
 
-// export function filterCards(gender) {
-//     return {
-//         type: FILTER,
-//         payload: gender,
-//     }
-// }
-// export function orderCards(order) { // order --> 'ASC' or 'DESC'
-//     return {
-//         type: ORDER,
-//         payload: order,
-//     }
-// }
-
-// export function resetFavFilters() {
-//     return {
-//         type: RESET_FAV_FILTERS,
-//         // payload: '',
-//     }
-// }
-
+export function filterAndOrder(filters) {  // filters is an object with filter and order criteria
+    return {
+        type: FILTER_AND_ORDER_POKEMONS,
+        payload: filters,
+    }
+}
 
 export function searchPokemonByName(name) {
     return {
@@ -56,14 +42,29 @@ export function searchPokemonById(id) {
 export function getPokemons() {
     return async function (dispatch) {
         try {
-            let PokesFromBackend = await (await axios.get(`http://localhost:3001/pokemons`)).data;
+            let pokesFromBackend = await (await axios.get(`http://localhost:3001/pokemons`)).data;
 
             dispatch({
                 type: GET_POKEMONS,
-                payload: PokesFromBackend,
+                payload: pokesFromBackend,
             });
         } catch (error) {
             throw new Error(error);
         }
     };
+}
+
+export function getTypes() {
+    return async function (dispatch) {
+        try {
+            const typesFromBackend = await (await axios.get('http://localhost:3001/types')).data;
+
+            dispatch({
+                type: GET_TYPES,
+                payload: typesFromBackend,
+            });
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
 }

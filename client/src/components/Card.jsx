@@ -6,7 +6,7 @@ export default function Card(props) {
    let location = useLocation();
 
    // store in types an array of html span tags for each pokemon's type (to be rendered in the card specs)
-   const types = props.types.map((t) => <span className={styles.specs}>{t}</span>);
+   const types = props.types.map((t, index) => <span className={styles.specs} key={index}>{t}</span>);
 
    // useEffect(() => {
    // }, []);

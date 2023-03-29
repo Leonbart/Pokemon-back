@@ -1,10 +1,9 @@
-import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER, ORDER, RESET_FILTERS, GET_POKEMONS } from "../actions/types.js";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_AND_ORDER_POKEMONS, RESET_POKEMONS_FILTERS, GET_POKEMONS, GET_TYPES } from "../actions/types.js";
 
 const initialState = {
-    // pokeIdToSearch: '',     // id of the searched pokemon
-    // pokeNameToSearch: '',   // name of the searched pokemon
     selectedPokemons: [],   // Selected pokemons to display
     allPokemons: [],        // All pokemons
+    allTypeNames: [],       // All pokemons type names
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -55,11 +54,23 @@ function rootReducer(state = initialState, { type, payload }) {
         //         ...state,
         //         selectedFavorites: [...state.allFavorites],
         // }
+        case FILTER_AND_ORDER_POKEMONS:
+            console.log('-------payload-----');
+            console.log(payload);
+            return {
+                ...state,
+            }
         case GET_POKEMONS:  // selectedPokemons <--- allFavorites <--- payload (from backend)
             return {
                 ...state,
                 selectedPokemons: payload,
                 allPokemons: payload,
+            }
+        case GET_TYPES:
+            const typeNames = payload.map(type => type.name);
+            return {
+                ...state,
+                allTypeNames: typeNames,
             }
 
         default:

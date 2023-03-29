@@ -1,53 +1,63 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../redux/actions/index.js';
 
 export default function Filtering() {
-    const [ selectedOrdering, setSelectedOrdering] = useState("");
-    const [ selectedFiltering, setSelectedFiltering] = useState("");
+    const [selectedTypeFilter, setSelectedTypeFilter] = useState("all");
+    const [selectedSourceFilter, setSelectedSourceFilter] = useState("all");
+    const [selectedNameOrder, setSelectedNameOrder] = useState("none");
+    const [selectedAttackOrder, setSelectedAttackOrder] = useState("none");
+
+    const types = useSelector(state => state.allTypeNames);
+    const typesOptions = types.map((type, index) => <option key={index} value={type}>{type}</option>)
 
     const dispatch = useDispatch();
 
-    const handleOrderChange = (e) => {
-        // dispatch(actions.orderCards(e.target.value));
-        setSelectedOrdering(e.target.value);
-        setSelectedFiltering("");
+    const handleTypeFilterChange = (e) => {
+        // setSelectedTypeFilter(e.target.value);
+
+        // This intermediate assignment is done to ensure that the latest value of selectedTypeFilter (got from e.target.value) is dispatched to the action filterAndOrder. This is because we are bypassing the asynchronous nature of useState. Investigating I found that there is an alternative way of doing this with the 'useCallback' hook, but I found it more complicated.
+        const typeFilter = e.target.value;
+        setSelectedTypeFilter(typeFilter);
+
+        dispatch(actions.filterAndOrder({
+            typeFilter: typeFilter,
+            sourceFilter: selectedSourceFilter,
+            nameOrder: selectedNameOrder,   // can be 'none'
+            attackOrder: selectedAttackOrder    // can be 'none'
+        }))
     };
 
-    const handleFilterChange = (e) => {
-        // dispatch(actions.filterCards(e.target.value));
-        setSelectedFiltering(e.target.value);
-        setSelectedOrdering("");
-    };
+    useEffect(() => {
+        dispatch(actions.getTypes());
+    }, []);
 
     return (
-            // Ordering and Filtering
-            <div
-                className='divOrderFiltering'>
-                <select className='selectOrderFilter'
-                    name='order'
-                    value={selectedOrdering}
-                    onChange={handleOrderChange}
-                // defaultValue=""
-                >
-                    <option value="" disabled>Select Order</option>
-                    <option value='ASC'>Ascending</option>
-                    <option value='DESC'>Descending</option>
-                </select>
+        // Ordering and Filtering
+        <div
+            className='divOrderFiltering'>
+            <span>Type</span>
+            <select className='selectOrderFilter'
+                name='type'
+                value={selectedTypeFilter}
+                onChange={handleTypeFilterChange}
+            >
+                {/* <option value="" disabled>Select Filter</option> */}
+                <option value='all'>All</option>
+                {typesOptions}
+            </select>
 
-                <select
-                    className='selectOrderFilter'
-                    name='filter'
-                    value={selectedFiltering}
-                    onChange={handleFilterChange}
-                // defaultValue=""
-                >
-                    <option value="" disabled>Select Gender</option>
-                    <option value='Male'>Male</option>
-                    <option value='Female'>Female</option>
-                    <option value='Genderless'>Genderless</option>
-                    <option value='unknown'>unknown</option>
-                </select>
-            </div>
+            <span>Source</span>
+            <select
+                className='selectOrderFilter'
+                name='source'
+                value={selectedSourceFilter}
+                onChange={handleTypeFilterChange}
+            >
+                <option value='all'>All</option>
+                <option value='pokédex'>pokédex</option>
+                <option value='created'>created</option>
+            </select>
+        </div>
     );
 }
