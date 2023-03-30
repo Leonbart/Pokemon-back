@@ -57,6 +57,7 @@ function rootReducer(state = initialState, { type, payload }) {
         case FILTER_AND_ORDER_POKEMONS:
             console.log('-------payload-----');
             console.log(payload);
+            console.log('-------------------');
             return {
                 ...state,
             }
