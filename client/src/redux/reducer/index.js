@@ -55,11 +55,24 @@ function rootReducer(state = initialState, { type, payload }) {
         //         selectedFavorites: [...state.allFavorites],
         // }
         case FILTER_AND_ORDER_POKEMONS:
+            let filteredAndOrdered = state.allPokemons;
+            // received payload:
+            // {
+            //     typeFilter: typeFilter,
+            //     sourceFilter: sourceFilter,
+            //     order: order,
+            // }
             console.log('-------payload-----');
             console.log(payload);
             console.log('-------------------');
+            // Filter by Type
+            if (payload.typeFilter !== 'all') {
+                filteredAndOrdered = state.allPokemons.filter(p => p.types.includes(payload.typeFilter));
+            }
+            // Filter by Source
             return {
                 ...state,
+                selectedPokemons: filteredAndOrdered,
             }
         case GET_POKEMONS:  // selectedPokemons <--- allFavorites <--- payload (from backend)
             return {
