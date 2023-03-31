@@ -18,13 +18,6 @@ export function addPokemon(poke) {
     }
 }
 
-export function filterAndOrder(filters) {  // filters is an object with filter and order criteria
-    return {
-        type: FILTER_AND_ORDER_POKEMONS,
-        payload: filters,
-    }
-}
-
 export function searchPokemonByName(name) {
     return {
         type: SEARCH_POKEMON_BY_NAME,
@@ -36,6 +29,19 @@ export function searchPokemonById(id) {
     return {
         type: SEARCH_POKEMON_BY_ID,
         payload: id,
+    }
+}
+
+export function filterAndOrder(filters) {  // filters is an object with filter and order criteria
+    return {
+        type: FILTER_AND_ORDER_POKEMONS,
+        payload: filters,
+    }
+}
+
+export function resetPokemonsFilters() {
+    return {
+        type: RESET_POKEMONS_FILTERS,
     }
 }
 

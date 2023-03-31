@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../redux/actions/index.js';
+import Button from '../components/Button.jsx';
 
 export default function Filtering() {
     const [selectedTypeFilter, setSelectedTypeFilter] = useState("all");
@@ -95,6 +96,16 @@ export default function Filtering() {
                 <option value='attack-asc'>attack (ascending)</option>
                 <option value='attack-desc'>attack (descending)</option>
             </select>
+            {/* RESET FILTERS BUTTON */}
+            <Button
+                text='reset filters'
+                onClick={() => {
+                    setSelectedTypeFilter("all");
+                    setSelectedSourceFilter("all");
+                    setSelectedOrder("none");
+                    dispatch(actions.resetPokemonsFilters())
+                }}
+            />
         </div>
     );
 }

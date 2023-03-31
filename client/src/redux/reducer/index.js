@@ -25,35 +25,6 @@ function rootReducer(state = initialState, { type, payload }) {
                 ...state,
                 selectedPokemons: pokemon2 ? [pokemon2] : []
             }
-        // case DELETE_FAVORITE:   // Delete a character from selectedFavorites and allFavorites
-        //     const newFarorites = state.selectedFavorites.filter(
-        //         favChar => favChar.id !== payload);
-        //     const newallFavorites = state.allFavorites.filter(
-        //         favChar => favChar.id !== payload);
-        //     return {
-        //         ...state,
-        //         selectedFavorites: newFarorites,
-        //         allFavorites: newallFavorites,
-        //     }
-        // case ORDER:     // Order selectedFavorites ascending or descending
-        //     const ordered = [...state.selectedFavorites];
-        //     ordered.sort((a, b) => a.id - b.id);
-        //     if (payload !== 'ASC') ordered.reverse();
-        //     return {
-        //         ...state,
-        //         selectedFavorites: [...ordered],
-        //     }
-        // case FILTER:    // Filter selectedFavorites by gender
-        //     const filteredByGender = state.allFavorites.filter(char => char.gender === payload);
-        //     return {
-        //         ...state,
-        //         selectedFavorites: [...filteredByGender],
-        //     }
-        // case RESET_FAV_FILTERS:     // selectedFavorites <--- allFavorites
-        //     return {
-        //         ...state,
-        //         selectedFavorites: [...state.allFavorites],
-        // }
         case FILTER_AND_ORDER_POKEMONS:
             let filteredAndOrdered = state.allPokemons;
             // received payload:
@@ -70,11 +41,37 @@ function rootReducer(state = initialState, { type, payload }) {
                 filteredAndOrdered = state.allPokemons.filter(p => p.types.includes(payload.typeFilter));
             }
             // Filter by Source
+            if (payload.sourceFilter !== 'all') {
+                filteredAndOrdered = filteredAndOrdered.filter(p => p.created === (payload.sourceFilter === 'created'));
+            }
+            // Order
+            if (payload.order !== 'none') {
+                switch (payload.order) {
+                    case 'name-asc':
+                        filteredAndOrdered.sort((a, b) => a.name.localeCompare(b.name));
+                        break;
+                    case 'name-desc':
+                        filteredAndOrdered.sort((a, b) => b.name.localeCompare(a.name));
+                        break;
+                    case 'attack-asc':
+                        filteredAndOrdered.sort((a, b) => a.attack - b.attack);
+                        break;
+                    case 'attack-desc':
+                        filteredAndOrdered.sort((a, b) => b.attack - a.attack);
+                        break;
+                    default:
+                }
+            }
             return {
                 ...state,
-                selectedPokemons: filteredAndOrdered,
+                selectedPokemons: [...filteredAndOrdered],
             }
-        case GET_POKEMONS:  // selectedPokemons <--- allFavorites <--- payload (from backend)
+        case RESET_POKEMONS_FILTERS:
+            return {
+                ...state,
+                selectedPokemons: [...state.allPokemons],
+            }
+        case GET_POKEMONS:  // selectedPokemons <--- allPokemons <--- payload (from backend)
             return {
                 ...state,
                 selectedPokemons: payload,

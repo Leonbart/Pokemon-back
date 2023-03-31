@@ -23,11 +23,13 @@ export default function Nav() {
                 </Link>
             </div>
             <div>
-                <Filtering />
+                {location.pathname === '/home' ?
+                    <Filtering /> : null
+                }
             </div>
             <div className={styles.divSearchBar}>
-                {location.pathname === '/home' ? 
-                <SearchBar /> : null
+                {location.pathname === '/home' ?
+                    <SearchBar /> : null
                 }
             </div>
         </div>

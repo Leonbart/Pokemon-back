@@ -9,11 +9,12 @@ DONE ----     3.2: update react component (verify if the searched value is an id
 DONE ----    4.1: create redux actions and reducers
 DONE ----    4.2: create a filter component and add it to the navbar (Filtering.jsx).
 DONE ----    4.3: code filtering logic in component.
-    4.4: code filtering logic in reducer.
-5. FRONT: Paging (12 pokemons per page)
-6. FRONT: Detail page (with all pokemon properties)
-7. FRONT: Form page to create new pokemon on DB (and redux states)
-8. FRONT: Improve stylings of all components.
+DONE ----    4.4: code filtering logic in reducer.
+5. FRONT: Detail page (with all pokemon properties)
+6. FRONT: Go to detail page when searching a pokemon.
+7. FRONT: Paging (12 pokemons per page)
+8. FRONT: Form page to create new pokemon on DB (and redux states)
+9. FRONT: Improve stylings of all components.
 
 Finish express routes to get by id and name both from DB and API (although they won't be used (check them with postman))
 
