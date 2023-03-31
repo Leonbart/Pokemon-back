@@ -3,7 +3,7 @@ DONE ---- 2. FRONT: Update card look and feel to show properties (Image, id, nam
 DONE ---- 3. FRONT: Search pokemon by name or id
 DONE ----     3.1: create redux actions and reducers
 DONE ----     3.2: update react component (verify if the searched value is an id or a name)
-4. FRONT:   Filter by type and source 
+DONE ---- 4. FRONT:   Filter by type and source 
             Order by name or attack (asc-desc)
             (don't store filter and order parameters in redux states, only changes in selectedPokemons state is important to Cards.jsx)
 DONE ----    4.1: create redux actions and reducers
@@ -11,6 +11,7 @@ DONE ----    4.2: create a filter component and add it to the navbar (Filtering.
 DONE ----    4.3: code filtering logic in component.
 DONE ----    4.4: code filtering logic in reducer.
 5. FRONT: Detail page (with all pokemon properties)
+            Get pokemon details from backend (not using redux in this component).
 6. FRONT: Go to detail page when searching a pokemon.
 7. FRONT: Paging (12 pokemons per page)
 8. FRONT: Form page to create new pokemon on DB (and redux states)
@@ -26,7 +27,7 @@ Finish express routes to get by id and name both from DB and API (although they 
 
 
 If there's time (before PI form presentation due date on April, 10th):
-200. FRONT: store backend host and port in .env and use them in redux actions
+200. FRONT: store backend host and port in .env and use them in redux actions (and to fetch pokemon in Detail.jsx)
 201. BACK: Refactor initial loading of pokemon's types from API to DB (now it is done on db.js with the funcion storeTypesFromAPItoDB(Type) and maybe it should be in index.js after synchronizing the models and before starting the server).
 202. BACK: Testing.
 203. FRONT: Testing.
