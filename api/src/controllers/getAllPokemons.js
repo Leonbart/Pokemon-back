@@ -2,6 +2,7 @@ require('dotenv').config();
 const { POKEMONS_COUNT } = process.env;
 const { Pokemon, Type } = require("../db/db.js");
 const axios = require('axios');
+const { _stripApiPokemon } = require('./_stripApiPokemon.js');
 
 const getAllPokemons = async (req, res) => {
     try {
@@ -22,26 +23,12 @@ const getAllPokemons = async (req, res) => {
                 requestPromises.push(axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`));
             };
             //      get pokemons in response
-            const response = await Promise.all(requestPromises);
+            const responses = await Promise.all(requestPromises);
             //      store pokemons as an array of pokemons with the needed properties
-            pokemons = response.map(response => {
-                let types = [];
-                response.data.types.forEach(t => types.push(t.type.name));
-                return ({
-                    id: response.data.id,
-                    name: response.data.name,
-                    image: response.data.sprites.other['official-artwork']['front_default'],
-                    hp: response.data.stats.find(stat => stat.stat.name === "hp").base_stat,
-                    attack: response.data.stats.find(stat => stat.stat.name === "attack").base_stat,
-                    defense: response.data.stats.find(stat => stat.stat.name === "defense").base_stat,
-                    speed: response.data.stats.find(stat => stat.stat.name === "speed").base_stat,
-                    height: response.data.height,
-                    weight: response.data.weight,
-                    types: types,
-                    created: false,     // add a 'created' key and set it to false to mark that the pokemon was retrieved from API (not created)
-                })
-            })
+
+            pokemons = responses.map(response => _stripApiPokemon(response.data));
         }
+
 
         // Get pokemons from DB and push then into pokemons array
         if (fromDB) {
@@ -57,7 +44,6 @@ const getAllPokemons = async (req, res) => {
                 ],
             });
 
-            // pokesFromDB.forEach(p => pokemons.push(p.toJSON()));
             pokesFromDB.forEach(p => {
                 // the 'types' attribute comes (from eager association loading) as an array of objects. Transform it to an array of strings
                 let typesAsStrings = p.types.map(t => t.name);
