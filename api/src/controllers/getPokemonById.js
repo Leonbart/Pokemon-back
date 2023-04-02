@@ -34,7 +34,7 @@ const getPokemonById = async (req, res) => {
         else if (/^\d+$/.test(id)) {
             console.log('LOOKING IN API');
             let idToInteger = parseInt(id, 10);
-            response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idToInteger}`);
+            let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idToInteger}`);
             pokemon = _stripApiPokemon(response.data);
         }
         // Wrong id type
