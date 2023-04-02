@@ -6,7 +6,7 @@ import styles from './Detail.module.css';
 export default function Detail() {
     const { pokeId } = useParams();
 
-    const [character, setCharacter] = useState({});
+    const [pokemon, setPokemon] = useState({});
     const navigate = useNavigate();
 
     const nameStyle = {
@@ -17,42 +17,45 @@ export default function Detail() {
     };
 
     useEffect(() => {
-        'http://localhost:3001/pokemons'
-        fetch(`http://localhost:3001/rickandmorty/detail/${pokeId}`)
+        fetch(`http://localhost:3001/pokemons/${pokeId}`)
             .then((response) => response.json())
-            .then((char) => {
-                if (char.name) {
-                    setCharacter(char);
+            .then((poke) => {
+                if (poke.name) {
+                    setPokemon(poke);
                 } else {
-                    window.alert("No character found with this ID");
+                    window.alert(`No pokemon found with this ID: ${pokeId}`);
                 }
             })
             .catch((err) => {
-                window.alert("No character found with this ID");
+                window.alert(`No pokemon found with this ID: ${pokeId}`);
             });
-        return setCharacter({});
+        return setPokemon({});
     }, [pokeId]);
 
     return (
-        <div className={styles.divDetail}>
-            <div className={styles.divData}>
-                <p style={nameStyle}>{character.name}</p>
-                <p className={styles.specs}>
-                    <span>STATUS: </span>
-                    <span className={(character.status === 'Alive') ? styles.alive : (character.status === 'Dead') ? styles.dead : null}>{character.status}</span>
-                </p>
-                <p className={styles.specs}>SPECIES: {character.species}</p>
-                <p className={styles.specs}>GENDER: {character.gender}</p>
-                <p className={styles.specs}>ORIGIN: {character.origin?.name}</p>
-                <p className={styles.specs}>LOCATION: {character.location?.name}</p>
+        <>
+                <div className={styles.divDetail}>
+                    <div className={styles.divData}>
+                        <p style={nameStyle}>{pokemon.name}</p>
+                        <p className={styles.specs}>id: {pokemon.id}</p>
+                        <p className={styles.specs}>hp: {pokemon.hp}</p>
+                        <p className={styles.specs}>attack: {pokemon.attack}</p>
+                        <p className={styles.specs}>defense: {pokemon.defense}</p>
+                        <p className={styles.specs}>speed: {pokemon.speed}</p>
+                        <p className={styles.specs}>height: {pokemon.height}</p>
+                        <p className={styles.specs}>weight: {pokemon.weight}</p>
+                        <p className={styles.specs}>types: {pokemon.types}</p>
+                    </div>
+                    <div className={styles.divImage}>
+                        <img src={pokemon.image} className={styles.image} alt="pokemon" />
+                    </div>
+                </div>
                 <div className={styles.divButtonBack}>
                     <Button
-                        text='go back'
+                        text='back'
                         onClick={() => navigate(-1)}
                     />
                 </div>
-            </div>
-            <img src={character.image} className='Image' alt="character" />
-        </div>
+        </>
     );
 };

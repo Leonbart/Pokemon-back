@@ -3,7 +3,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Nav from './components/Nav.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import Cards from './components/Cards.jsx';
-import About from './components/About.jsx'
+import About from './components/About.jsx';
+import Detail from './components/Detail.jsx';
 
 function App() {
   let location = useLocation();
@@ -16,10 +17,7 @@ function App() {
         <Route exact path='/' element={<LandingPage />} />;
         <Route path='/home' element={<Cards />} />;
         <Route path='/about' element={<About />} />;
-        {/* 
-        <Route path='/detail/:detailId' element={<Detail />} />;
-        <Route path='/favorites' element={<Favorites />} />;
-        <Route path='*' element={<Error />} />; */}
+        <Route path='/detail/:pokeId' element={<Detail />} />;
       </Routes>
     </div>
   );

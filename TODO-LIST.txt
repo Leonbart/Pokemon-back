@@ -10,12 +10,12 @@ DONE ----    4.1: create redux actions and reducers
 DONE ----    4.2: create a filter component and add it to the navbar (Filtering.jsx).
 DONE ----    4.3: code filtering logic in component.
 DONE ----    4.4: code filtering logic in reducer.
-5. FRONT: Detail page. With the following pokemon properties:
+DONE ---- 5. FRONT: Detail page. With the following pokemon properties:
             id, name, image, hp, attack, defense, speed (if any), height (if any), weight (if any), types (can be more than one)
             Get pokemon details from backend (not using redux in this component).
-6. FRONT: Go to detail page when searching a pokemon.
+6. FRONT: Form page to create new pokemon on DB (and redux states). Same pokemon properties as detail page (except for id). 
 7. FRONT: Paging (12 pokemons per page)
-8. FRONT: Form page to create new pokemon on DB (and redux states). Same pokemon properties as detail page (except for id). 
+8. FRONT: Reset filter and order criteria when searching a pokemon.
 9. FRONT: Improve stylings of all components.
 
 

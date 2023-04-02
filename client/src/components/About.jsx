@@ -41,8 +41,8 @@ export default function About() {
             <p>Created by: Leonardo Alabart</p>
             <DivBtnHome>
                 <Button
-                    text='HOME'
-                    onClick={() => navigate('/home')}
+                    text='back'
+                    onClick={() => navigate(-1)}
                 />
             </DivBtnHome>
         </DivAbout>

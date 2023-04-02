@@ -9,8 +9,14 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 0 3rem;
+    padding: 0 3rem 2rem 3rem;
     background-color: rgba(0, 0, 0, 0.6);
+}
+
+.divImage {
+    width: auto;
+    height: 100%;
+
 }
 
 .specs {
@@ -22,9 +28,12 @@
     text-align: left;
 }
 
-/* .Image {
-    object-fit: fill;
-} */
+.image {
+    /* object-fit: fill; */
+    max-width: 230px;
+    max-height: 95px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
 
 .divButtonBack {
     height: 100%;
@@ -34,14 +43,5 @@
     justify-content: flex-end;
     align-items: center;
     padding-bottom: 1rem;
-}
-
-.dead {
-    color: rgba(204, 133, 133, 0.712);
-    font-weight: 500;
-}
-
-.alive {
-    color: rgba(133, 204, 133, 0.904);
-    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.6);
 }
