@@ -1,0 +1,46 @@
+.divLoginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 0 0 1.5rem 0;
+    color: rgba(230, 230, 230, 1);
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 25%;
+}
+
+.divImgContainer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(115, 171, 179);
+    width: 100%;
+    height: 5rem;
+    margin-bottom: 2rem;
+    background-image: url('../assets/rick_and_morty_logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+};
+
+/* .image {
+    max-height: 10%;
+    width: auto;
+} */
+
+.divButton {
+    margin-top: 2rem;
+}
+
+.warning {
+    border: solid rgb(250, 180, 180) 1px;
+    border-radius: 0.2em;
+}
+
+.danger {
+    font-size: 0.7rem;
+    color: rgb(250, 180, 180);
+    margin-top: 0.3rem;
+    margin-left: 2.8rem;
+}
