@@ -13,8 +13,8 @@ const _stripApiPokemon = (pokeFromAPI) => {
         attack: pokeFromAPI.stats.find(stat => stat.stat.name === "attack").base_stat,
         defense: pokeFromAPI.stats.find(stat => stat.stat.name === "defense").base_stat,
         speed: pokeFromAPI.stats.find(stat => stat.stat.name === "speed").base_stat,
-        height: pokeFromAPI.height,
-        weight: pokeFromAPI.weight,
+        height: pokeFromAPI.height / 10, // API heights are in dm.; transform to m.
+        weight: pokeFromAPI.weight / 10, // API weights are in 0.1kg; transform to kg.
         types: types,
         created: false,     // add a 'created' key and set it to false to mark that the pokemon was retrieved from API (not created)
     })

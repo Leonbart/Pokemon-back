@@ -27,6 +27,14 @@ export default function Nav() {
                     <Filtering /> : null
                 }
             </div>
+            <div>
+                {location.pathname === '/home' ?
+                    <Link to='/create'>
+                        <Button text='new pokémon' />
+                    </Link>
+                    : null
+                }
+            </div>
             <div className={styles.divSearchBar}>
                 {location.pathname === '/home' ?
                     <SearchBar /> : null

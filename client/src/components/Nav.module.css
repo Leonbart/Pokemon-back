@@ -1,10 +1,14 @@
 .divNav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(115, 171, 179)
+    background-color: rgb(115, 171, 179, 1)
 }
 
 .divLeft {

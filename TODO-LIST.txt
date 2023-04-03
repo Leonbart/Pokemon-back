@@ -13,19 +13,18 @@ DONE ----    4.4: code filtering logic in reducer.
 DONE ---- 5. FRONT: Detail page. With the following pokemon properties:
             id, name, image, hp, attack, defense, speed (if any), height (if any), weight (if any), types (can be more than one)
             Get pokemon details from backend (not using redux in this component).
-6. FRONT: Form page to create new pokemon on DB (and redux states). Same pokemon properties as detail page (except for id). 
+DONE ---- 6. FRONT: Form page to create new pokemon on DB (and redux states).
+                    Same pokemon properties as detail page (except for id). 
 7. FRONT: Paging (12 pokemons per page)
-8. FRONT: Reset filter and order criteria when searching a pokemon.
-9. FRONT: Improve stylings of all components.
-
-
-
+8. FRONT: Improve stylings of all components.
+9. FRONT: Reset filter and order criteria when searching a pokemon.
 
 
 
 
 If there's time (before PI form presentation due date on April, 10th):
-200. FRONT: store backend host and port in .env and use them in redux actions (and to fetch pokemon in Detail.jsx)
-201. BACK: Refactor initial loading of pokemon's types from API to DB (now it is done on db.js with the funcion storeTypesFromAPItoDB(Type) and maybe it should be in index.js after synchronizing the models and before starting the server).
-202. BACK: Testing.
-203. FRONT: Testing.
+200. DEPLOY
+201. FRONT: store backend host and port in .env and use them in redux actions (and to fetch pokemon in Detail.jsx)
+202. BACK: Refactor initial loading of pokemon's types from API to DB (now it is done on db.js with the funcion storeTypesFromAPItoDB(Type) and maybe it should be in index.js after synchronizing the models and before starting the server).
+203. BACK: Testing.
+204. FRONT: Testing.
