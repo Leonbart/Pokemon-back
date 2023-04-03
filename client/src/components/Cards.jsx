@@ -1,16 +1,26 @@
+require('dotenv').config();
+const { POKES_PER_PAGE } = process.env;
 import styles from './Cards.module.css';
 import Card from './Card';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../redux/actions/index.js';
 
 export default function Cards() {
    const selectedPokemons = useSelector(state => state.selectedPokemons);
+   const currentPage = useSelector(state => state.currentPage);
+   const [firstDisplayIndex, setFirstDisplayIndex] = useState(0);
+   const [lastDisplayIndex, setLastDisplayIndex] = useState(POKES_PER_PAGE);
    const dispatch = useDispatch();
 
    useEffect(() => {
       dispatch(actions.getPokemons());
    }, []);
+
+   // Set range of pokemons to display, based on indexes of selectedPokemons array
+   useEffect(() => {
+
+   }, [currentPage]);
 
    return (
       <div className={styles.divCards}>
