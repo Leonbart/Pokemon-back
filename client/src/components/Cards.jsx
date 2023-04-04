@@ -1,7 +1,7 @@
 import styles from './Cards.module.css';
 import Card from './Card.jsx';
 import Paging from './Paging.jsx';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../redux/actions/index.js';
 
@@ -9,13 +9,10 @@ const POKES_PER_PAGE = process.env.REACT_APP_API_POKES_PER_PAGE;
 
 export default function Cards() {
    const selectedPokemons = useSelector(state => state.selectedPokemons);
-   const [currentPage, setCurrentPage] = useState(1);
+   const currentPage = useSelector(state => state.currentPage);
    const firstDisplayIdx = (currentPage - 1) * POKES_PER_PAGE;
    const lastDisplayIdx = currentPage * POKES_PER_PAGE - 1;
    const dispatch = useDispatch();
-
-   // Create a function that sets the current page, to past to Paging child component
-   const updCurrentPage = (pageNumber) => setCurrentPage(pageNumber);
 
    useEffect(() => {
       dispatch(actions.getPokemons());
@@ -26,7 +23,6 @@ export default function Cards() {
       <>
          <div>
             <Paging
-               setPage={updCurrentPage}
                numPokesToDisplay={selectedPokemons.length}
                pokesPerPage={POKES_PER_PAGE}
             />
@@ -45,7 +41,6 @@ export default function Cards() {
          </div>
          <div>
             <Paging
-               setPage={updCurrentPage}
                numPokesToDisplay={selectedPokemons.length}
                pokesPerPage={POKES_PER_PAGE}
             />

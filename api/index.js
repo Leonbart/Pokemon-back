@@ -19,9 +19,15 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db/db.js');
+const storeTypesFromAPItoDB = require('./src/db/storeTypesFromAPItoDB.js');
+const { Type } = require("./src/db/db.js");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
+  // Get all pokemon's types from API and store them in DB
+  storeTypesFromAPItoDB(Type);
+  // .then((data) => console.log(data.map(t => t.toJSON().name)));
+
   server.listen(3001, () => {
     console.log('Local DB API Listening at 3001'); // eslint-disable-line no-console
   });

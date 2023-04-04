@@ -45,7 +45,10 @@ export default function Filtering() {
             typeFilter: typeFilter,
             sourceFilter: sourceFilter,
             order: order,
-        }))
+        }));
+
+        // Set current page in 1
+        dispatch(actions.setCurrentPage(1));
     };
 
     useEffect(() => {

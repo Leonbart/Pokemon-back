@@ -1,9 +1,10 @@
-import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_AND_ORDER_POKEMONS, RESET_POKEMONS_FILTERS, GET_POKEMONS, GET_TYPES } from "../actions/types.js";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_AND_ORDER_POKEMONS, RESET_POKEMONS_FILTERS, GET_POKEMONS, GET_TYPES, SET_CURRENT_PAGE } from "../actions/types.js";
 
 const initialState = {
     selectedPokemons: [],   // Selected pokemons to display
     allPokemons: [],        // All pokemons
     allTypeNames: [],       // All pokemons type names
+    currentPage: 1,         // For paginating. Must be visible to Filterning, Cards, and Paging
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -82,6 +83,11 @@ function rootReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 allTypeNames: typeNames,
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: payload,
             }
 
         default:

@@ -6,3 +6,4 @@ export const FILTER_AND_ORDER_POKEMONS = 'FILTER_AND_ORDER_POKEMONS'; // Filter 
 export const RESET_POKEMONS_FILTERS = 'RESET_POKEMONS_FILTERS';   // Reset applied filters in store
 export const GET_POKEMONS = 'GET_POKEMONS';    // Get all Pokemons from backend into store
 export const GET_TYPES = 'GET_TYPES';    // Get all Types from backend into store
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';    // Set current page for paging

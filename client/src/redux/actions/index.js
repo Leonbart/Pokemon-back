@@ -1,4 +1,4 @@
-import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_AND_ORDER_POKEMONS, RESET_POKEMONS_FILTERS, GET_POKEMONS, GET_TYPES } from "./types";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_AND_ORDER_POKEMONS, RESET_POKEMONS_FILTERS, GET_POKEMONS, GET_TYPES, SET_CURRENT_PAGE } from "./types";
 import axios from 'axios';
 
 export function addPokemon(poke) {
@@ -72,5 +72,12 @@ export function getTypes() {
         } catch (error) {
             throw new Error(error);
         }
+    }
+}
+
+export function setCurrentPage(page) {
+    return {
+        type: SET_CURRENT_PAGE,
+        payload: page,
     }
 }
