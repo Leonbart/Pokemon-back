@@ -1,0 +1,17 @@
+.ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+}
+
+.li {
+    display: flex;
+    /* margin: auto; */
+    /* padding: 0 0 1.5rem 0; */
+    color: rgba(230, 230, 230, 1);
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 2rem;
+}

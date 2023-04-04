@@ -4,7 +4,6 @@ const initialState = {
     selectedPokemons: [],   // Selected pokemons to display
     allPokemons: [],        // All pokemons
     allTypeNames: [],       // All pokemons type names
-    currentPage: 1,         // Page currently being displayed (12 pokemons)
 };
 
 function rootReducer(state = initialState, { type, payload }) {
