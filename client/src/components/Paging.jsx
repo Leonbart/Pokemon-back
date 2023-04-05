@@ -17,8 +17,13 @@ export default function Paging({ setPage, numPokesToDisplay, pokesPerPage }) {
         <nav>
             <ul className={styles.ul}>
                 {pageNumbers && pageNumbers.map(num => (
-                    <li className={styles.li} key={num}>
-                        <span onClick={() => dispatch(actions.setCurrentPage(num))}>{num}</span>
+                    // <li className={num === currentPage ? styles.li} key={num}>
+                    <li
+                        className={`${styles.li} ${(num === currentPage) ? styles.current_page : styles.normal_page}`}
+                        key={num}
+                        onClick={() => dispatch(actions.setCurrentPage(num))}
+                    >
+                        {num}
                     </li>
                 ))}
             </ul>
