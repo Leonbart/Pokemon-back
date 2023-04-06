@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './SearchBar.module.css';
 import Button from './Button';
-import {searchPokemonByName, searchPokemonById} from '../redux/actions/index.js'
+import { searchPokemonByName, searchPokemonById } from '../redux/actions/index.js'
 
 export default function SearchBar() {
    const [pokeIDorName, setpokeIDorName] = useState(''); // contents of search input
@@ -22,26 +22,31 @@ export default function SearchBar() {
 
    return (
       <div className={styles.divSearch}>
-         <input
-            className={styles.input}
-            type='search'
-            placeholder='id or name...'
-            value={pokeIDorName}
-            onChange={handleChange}
-         />
-         <Button
-            text='Search'
-            onClick={() => {
-               if (pokeIDorName !== '') {
-                  // Check if Id or Name to choose the action to dispatch
-                  let nameOrId = isIDorName(pokeIDorName);
-                  if (nameOrId === 'name') dispatch(searchPokemonByName(pokeIDorName.toLocaleLowerCase()))
-                  else if (nameOrId === 'id') dispatch(searchPokemonById(pokeIDorName.toLocaleLowerCase()));
+         <div className={styles.searchColumn}>
+            <span className={styles.searchTitle}>id / name</span>
+            <input
+               className={styles.input}
+               type='search'
+               // placeholder='id or name...'
+               value={pokeIDorName}
+               onChange={handleChange}
+            />
+         </div>
+         <div className={`${styles.searchColumn} ${styles.searchButton}`}>
+            <Button
+               text='Search'
+               onClick={() => {
+                  if (pokeIDorName !== '') {
+                     // Check if Id or Name to choose the action to dispatch
+                     let nameOrId = isIDorName(pokeIDorName);
+                     if (nameOrId === 'name') dispatch(searchPokemonByName(pokeIDorName.toLocaleLowerCase()))
+                     else if (nameOrId === 'id') dispatch(searchPokemonById(pokeIDorName.toLocaleLowerCase()));
 
-                  setpokeIDorName('');
-               }
-            }}
-         />
+                     setpokeIDorName('');
+                  }
+               }}
+            />
+         </div>
       </div>
    );
 }

@@ -22,22 +22,22 @@ export default function Nav() {
                     <Button text='about' />
                 </Link>
             </div>
+            <div className={styles.divSearchBar}>
+                {location.pathname === '/home' ?
+                    <SearchBar /> : null
+                }
+            </div>
             <div>
                 {location.pathname === '/home' ?
                     <Filtering /> : null
                 }
             </div>
-            <div>
+            <div className={styles.createButton}>
                 {location.pathname === '/home' ?
                     <Link to='/create'>
                         <Button text='new pokémon' />
                     </Link>
                     : null
-                }
-            </div>
-            <div className={styles.divSearchBar}>
-                {location.pathname === '/home' ?
-                    <SearchBar /> : null
                 }
             </div>
         </div>

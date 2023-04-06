@@ -27,7 +27,7 @@ function rootReducer(state = initialState, { type, payload }) {
                 selectedPokemons: pokemon2 ? [pokemon2] : []
             }
         case FILTER_AND_ORDER_POKEMONS:
-            let filteredAndOrdered = state.allPokemons;
+            let filteredAndOrdered = [...state.allPokemons];
             // received payload:
             // {
             //     typeFilter: typeFilter,

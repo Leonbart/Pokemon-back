@@ -1,3 +1,4 @@
+import styles from './Filtering.module.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../redux/actions/index.js';
@@ -13,6 +14,7 @@ export default function Filtering() {
     const typesOptions = types.map((type, index) => <option key={index} value={type}>{type}</option>)
 
     const dispatch = useDispatch();
+
 
     const handleFilterOrderChange = (e) => {
         e.preventDefault();
@@ -57,58 +59,65 @@ export default function Filtering() {
 
     return (
         // Ordering and Filtering
-        <div
-            className='divOrderFiltering'>
+        <div className={styles.divOrderFilter}>
             {/* FILTER BY TYPE */}
-            <span>Type</span>
-            <select className='selectOrderFilter'
-                name='type'
-                value={selectedTypeFilter}
-                onChange={handleFilterOrderChange}
-            >
-                {/* <option value="" disabled>Select Filter</option> */}
-                <option value='all'>All</option>
-                {typesOptions}
-            </select>
+            <div className={styles.filterOrderColumn}>
+                <span className={styles.selectTitle}>Type</span>
+                <select className={styles.selectOrderFilter}
+                    name='type'
+                    value={selectedTypeFilter}
+                    onChange={handleFilterOrderChange}
+                >
+                    {/* <option value="" disabled>Select Filter</option> */}
+                    <option value='all'>All</option>
+                    {typesOptions}
+                </select>
+            </div>
 
             {/* FILTER BY SOURCE */}
-            <span>Source</span>
-            <select
-                className='selectOrderFilter'
-                name='source'
-                value={selectedSourceFilter}
-                onChange={handleFilterOrderChange}
-            >
-                <option value='all'>All</option>
-                <option value='pokédex'>pokédex</option>
-                <option value='created'>created</option>
-
-            </select>
+            <div className={styles.filterOrderColumn}>
+                <span className={styles.selectTitle}>Source</span>
+                <select
+                    className={styles.selectOrderFilter}
+                    name='source'
+                    value={selectedSourceFilter}
+                    onChange={handleFilterOrderChange}
+                >
+                    <option value='all'>All</option>
+                    <option value='pokédex'>pokédex</option>
+                    <option value='created'>created</option>
+                </select>
+            </div>
 
             {/* ORDER BY NAME OR ATTACK (ASC OR DESC) */}
-            <span>Order by</span>
-            <select
-                className='selectOrderFilter'
-                name='order'
-                value={selectedOrder}
-                onChange={handleFilterOrderChange}
-            >
-                <option value='none'>None</option>
-                <option value='name-asc'>name (ascending)</option>
-                <option value='name-desc'>name (descending)</option>
-                <option value='attack-asc'>attack (ascending)</option>
-                <option value='attack-desc'>attack (descending)</option>
-            </select>
+            <div className={styles.filterOrderColumn}>
+                <span className={styles.selectTitle}>Order by</span>
+                <select
+                    className={styles.selectOrderFilter}
+                    name='order'
+                    value={selectedOrder}
+                    onChange={handleFilterOrderChange}
+                >
+                    <option value='none'>None</option>
+                    <option value='name-asc'>name (ascending)</option>
+                    <option value='name-desc'>name (descending)</option>
+                    <option value='attack-asc'>attack (ascending)</option>
+                    <option value='attack-desc'>attack (descending)</option>
+                </select>
+            </div>
+
             {/* RESET FILTERS BUTTON */}
-            <Button
-                text='reset filters'
-                onClick={() => {
-                    setSelectedTypeFilter("all");
-                    setSelectedSourceFilter("all");
-                    setSelectedOrder("none");
-                    dispatch(actions.resetPokemonsFilters())
-                }}
-            />
+            <div className={`${styles.filterOrderColumn} ${styles.resetFiltersButton}`}>
+                <Button
+                    text='reset filters'
+                    onClick={() => {
+                        setSelectedTypeFilter("all");
+                        setSelectedSourceFilter("all");
+                        setSelectedOrder("none");
+                        dispatch(actions.resetPokemonsFilters())
+                    }}
+                />
+            </div>
         </div>
     );
 }

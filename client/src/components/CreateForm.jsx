@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './CreateForm.modules.css';
+import './CreateForm.module.css';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import Button from './Button.jsx';

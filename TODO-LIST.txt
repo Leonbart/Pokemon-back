@@ -15,10 +15,10 @@ DONE ---- 5. FRONT: Detail page. With the following pokemon properties:
             Get pokemon details from backend (not using redux in this component).
 DONE ---- 6. FRONT: Form page to create new pokemon on DB (and redux states).
                     Same pokemon properties as detail page (except for id). 
-7. FRONT: Paging (12 pokemons per page)
+DONE ---- 7. FRONT: Paging (12 pokemons per page)
 8. FRONT: Improve stylings of all components.
 9. FRONT: Reset filter and order criteria when searching a pokemon.
-
+10. FRONT: Validate name length on creation.
 
 
 
