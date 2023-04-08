@@ -39,12 +39,12 @@ export default function Cards() {
                      types={elem.types}
                   />)}
          </div>
-         <div>
+         {/* <div>
             <Paging
                numPokesToDisplay={selectedPokemons.length}
                pokesPerPage={POKES_PER_PAGE}
             />
-         </div>
+         </div> */}
       </>
    )
 }

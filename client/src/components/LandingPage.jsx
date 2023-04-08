@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button.jsx';
 import styles from './LandingPage.module.css';
-import logo from '../assets/logos/Pokemon-01.svg';
+import logo from '../assets/logos/Pokemon-01-cropped.svg';
 
 export default function LandingPage(props) {
 

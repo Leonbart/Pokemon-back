@@ -7,30 +7,63 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
     background-color: rgb(115, 171, 179, 1)
 }
 
-.divLeft {
+.divImageAndMenu {
+    /* flex-grow: 0; */
+    flex-basis: 27rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.divImage {
+    flex-shrink: 0;
+    margin: 0;
+    max-width: 10rem;
+    width: 100%;
+    height: 100%;
+    padding: 0 2rem;
+}
+
+.divMenuButtons {
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.75rem;
+    /* padding-right: 10rem; */
+}
+
+
+.divMainBar {
+    /* flex-grow: 1; */
+    flex-basis: auto;
+    /* flex-shrink: 0; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    column-gap: 0.75rem;
-    padding-right: 10rem;
+    justify-content: space-evenly;
+    gap: 0.5rem;
 }
 
-.image {
-    height: 5rem;
-    width: auto;
-    padding: 0 1rem;
-}
-
-.divSearchBar {
-    /* background-color: rgb(55, 149, 161); */
-    margin-right: 0.5rem;
+.divSearchFilterBar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
 }
 
 .createButton {
-    padding-left: 10rem; 
+    padding: 0.5rem 0.5rem;
 }
