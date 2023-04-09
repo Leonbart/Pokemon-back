@@ -7,7 +7,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 0.5rem;
     padding: 0.5rem 0;
     background-color: rgb(115, 171, 179, 1)
@@ -45,8 +45,8 @@
 
 
 .divMainBar {
-    /* flex-grow: 1; */
-    flex-basis: auto;
+    flex-grow: 1;
+    /* flex-basis: 1; */
     /* flex-shrink: 0; */
     display: flex;
     flex-direction: row;
