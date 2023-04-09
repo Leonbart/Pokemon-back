@@ -2,21 +2,24 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    height: auto;
     padding: 1rem;
 }
 
 .divData {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-self: flex-start;
+    height: 100%;
     padding: 0 3rem 2rem 3rem;
     background-color: rgba(0, 0, 0, 0.6);
 }
 
 .divImage {
-    width: auto;
-    height: 100%;
-
+    /* width: auto; */
+    align-self: stretch;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .specs {
@@ -29,10 +32,12 @@
 }
 
 .image {
-    /* object-fit: fill; */
-    max-width: 230px;
-    max-height: 95px;
-    background-color: rgba(0, 0, 0, 0.3);
+    /* margin: 0; */
+    max-height: 200px;
+    width: auto;
+    /* object-fit: contain; */
+    /* max-width: 230px;
+    max-height: 95px; */
 }
 
 .divButtonBack {
