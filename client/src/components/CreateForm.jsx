@@ -4,13 +4,15 @@ import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import Button from './Button.jsx';
 import axios from 'axios';
+import styles from './CreateForm.module.css';
 
 export function validate(inputs) {
   let errors = {};
 
+
   //---name validation---
-  if (!inputs.name) {
-    errors.name = "Name required"
+  if (/\d/.test(inputs.name)) { // Check if name has any number
+    errors.name = "Name cannot contain any number"
     //---image URL validation---
     // } else if (check if a valid jpg or png image) {
     //   errors.image = "Could not fetch image"
@@ -94,7 +96,7 @@ export default function CreateForm() {
     e.preventDefault();
     if (Object.values(errors).length === 0) { // This check was done to display the create button, so it could be removed from here
       try {
-        // Delete empty keys (that are not mandatory, or wouldn't have been validated) to avoid failure in post
+        // Delete EMPTY keys (which are not mandatory, or wouldn't have been validated) to avoid failure in post
         let filteredInputs = {};
         for (const [key, value] of Object.entries(inputs)) {
           if (value !== "") filteredInputs[key] = value;
@@ -114,33 +116,38 @@ export default function CreateForm() {
 
 
   return (
-    <div>
-      <form>
-        <label htmlFor="name">Name:</label>
+    <div className={styles.divMainContainer}>
+
+      <div className={styles.divTitle}>
+        <span className={styles.title}>create new pokémon</span>
+      </div>
+
+      <form className={styles.form}>
+        <label className={styles.formLabels} htmlFor="name">Name</label>
         <input
           id="name"
           name="name"
-          placeholder="name..."
+          // placeholder="name..."
           type="text"
           value={inputs.name}
           onChange={handleChange}
-          className={errors.name && 'warning'}
+          className={(errors.name && (errors.name !== ''))? `${styles.warning} ${styles.formInputs}` : `${styles.formInputs}`}
         />
-        <p className='danger'>{errors.name}</p>
+        <p className={styles.danger}>{errors.name}</p>
 
-        <label htmlFor="image">Image URL:</label>
+        <label className={styles.formLabels} htmlFor="image">Image URL</label>
         <input
           id="image"
           name="image"
-          placeholder="image URL..."
+          // placeholder="image URL..."
           type="text"
           value={inputs.image}
           onChange={handleChange}
-          className={errors.image && 'warning'}
+          className={(errors.image && (errors.image !== ''))? `${styles.warning} ${styles.formInputs}` : `${styles.formInputs}`}
         />
-        <p className='danger'>{errors.image}</p>
+        <p className={styles.danger}>{errors.image}</p>
 
-        <label htmlFor="hp">HP:</label>
+        <label className={styles.formLabels} htmlFor="hp">HP</label>
         <input
           id="hp"
           name="hp"
@@ -148,11 +155,11 @@ export default function CreateForm() {
           type="number"
           value={inputs.hp}
           onChange={handleChange}
-          className={errors.hp && 'warning'}
+          className={(errors.hp && (errors.hp !== ''))? `${styles.warning} ${styles.formInputs}` : `${styles.formInputs}`}
         />
-        <p className='danger'>{errors.hp}</p>
+        <p className={styles.danger}>{errors.hp}</p>
 
-        <label htmlFor="attack">Attack:</label>
+        <label className={styles.formLabels} htmlFor="attack">Attack</label>
         <input
           id="attack"
           name="attack"
@@ -160,11 +167,11 @@ export default function CreateForm() {
           type="number"
           value={inputs.attack}
           onChange={handleChange}
-          className={errors.attack && 'warning'}
+          className={(errors.attack && (errors.attack !== ''))? `${styles.warning} ${styles.formInputs}` : `${styles.formInputs}`}
         />
-        <p className='danger'>{errors.attack}</p>
+        <p className={styles.danger}>{errors.attack}</p>
 
-        <label htmlFor="defense">Defense:</label>
+        <label className={styles.formLabels} htmlFor="defense">Defense</label>
         <input
           id="defense"
           name="defense"
@@ -172,11 +179,11 @@ export default function CreateForm() {
           type="number"
           value={inputs.defense}
           onChange={handleChange}
-          className={errors.defense && 'warning'}
+          className={(errors.defense && (errors.defense !== ''))? `${styles.warning} ${styles.formInputs}` : `${styles.formInputs}`}
         />
-        <p className='danger'>{errors.defense}</p>
+        <p className={styles.danger}>{errors.defense}</p>
 
-        <label htmlFor="speed">Speed:</label>
+        <label className={styles.formLabels} htmlFor="speed">Speed</label>
         <input
           id="speed"
           name="speed"
@@ -184,11 +191,11 @@ export default function CreateForm() {
           type="number"
           value={inputs.speed}
           onChange={handleChange}
-          className={errors.speed && 'warning'}
+          className={(errors.speed && (errors.speed !== ''))? `${styles.warning} ${styles.formInputs}` : `${styles.formInputs}`}
         />
-        <p className='danger'>{errors.speed}</p>
+        <p className={styles.danger}>{errors.speed}</p>
 
-        <label htmlFor="height">Height:</label>
+        <label className={styles.formLabels} htmlFor="height">Height</label>
         <input
           id="height"
           name="height"
@@ -196,11 +203,11 @@ export default function CreateForm() {
           type="number"
           value={inputs.height}
           onChange={handleChange}
-          className={errors.height && 'warning'}
+          className={(errors.height && (errors.height !== ''))? `${styles.warning} ${styles.formInputs}` : `${styles.formInputs}`}
         />
-        <p className='danger'>{errors.height}</p>
+        <p className={styles.danger}>{errors.height}</p>
 
-        <label htmlFor="weight">Weight:</label>
+        <label className={styles.formLabels} htmlFor="weight">Weight</label>
         <input
           id="weight"
           name="weight"
@@ -208,28 +215,29 @@ export default function CreateForm() {
           type="number"
           value={inputs.weight}
           onChange={handleChange}
-          className={errors.weight && 'warning'}
+          className={(errors.weight && (errors.weight !== ''))? `${styles.warning} ${styles.formInputs}` : `${styles.formInputs}`}
         />
-        <p className='danger'>{errors.weight}</p>
+        <p className={styles.danger}>{errors.weight}</p>
 
         <fieldset>
-          <legend>Choose Pokémon's types</legend>
+          <legend className={styles.formLabels}>Choose Pokémon's types</legend>
           {allTypes.map((type, index) => (
-            <label key={index}>
+            <label className={styles.formLabels} key={index}>
               <input
                 type="checkbox"
                 name={type}
                 checked={inputs.types.includes(type)}
                 onChange={handleTypesChange}
+                // className={styles.formInputs}
               />
               {type}
             </label>
           ))}
-          <p className='danger'>{errors.types}</p>
+          <p className={styles.danger}>{errors.types}</p>
         </fieldset>
       </form>
 
-      <div>
+      <div className={styles.divButtons}>
         {/* ---CREATE button--- */}
         {(Object.values(errors).length === 0) ? <Button text="create" onClick={handleSubmit} /> : null}
 
@@ -242,7 +250,7 @@ export default function CreateForm() {
           }}
         />
         <Button
-          text='cancel'
+          text='back'
           onClick={() => navigate(-1)}
         />
       </div>

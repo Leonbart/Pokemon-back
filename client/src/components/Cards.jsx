@@ -29,7 +29,9 @@ export default function Cards() {
          </div>
          <div className={styles.divCards}>
             {selectedPokemons.length === 0
-               ? <h1 style={{ color: 'red' }}>NO POKÉMON MATCHED YOUR SEARCH</h1>
+               ? <h1 style={{ fontSize: '1.5rem', fontWeight: '300', color: 'rgb(221, 100, 100)', backgroundColor: 'black', padding: '1rem', borderRadius: '0.5rem' }}>
+                  NO POKÉMON MATCHED YOUR SEARCH
+               </h1>
                : selectedPokemons.slice(firstDisplayIdx, lastDisplayIdx + 1).map((elem, index) =>
                   <Card
                      key={index}

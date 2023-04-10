@@ -10,10 +10,11 @@ export default function Detail() {
     const navigate = useNavigate();
 
     const nameStyle = {
-        color: 'rgba(230, 230, 230, 1)',
-        margin: '1rem 0',
+        // color: 'rgba(230, 230, 230, 1)',
+        color: 'rgb(190, 215, 190)',
         fontWeight: '600',
         fontSize: '2rem',
+        textTransform: 'capitalize',
     };
 
     useEffect(() => {
@@ -32,30 +33,67 @@ export default function Detail() {
         return setPokemon({});
     }, [pokeId]);
 
+
     return (
-        <>
-                <div className={styles.divDetail}>
-                    <div className={styles.divData}>
-                        <p style={nameStyle}>{pokemon.name}</p>
-                        <p className={styles.specs}>id: {pokemon.id}</p>
-                        <p className={styles.specs}>hp: {pokemon.hp}</p>
-                        <p className={styles.specs}>attack: {pokemon.attack}</p>
-                        <p className={styles.specs}>defense: {pokemon.defense}</p>
-                        <p className={styles.specs}>speed: {pokemon.speed}</p>
-                        <p className={styles.specs}>height: {pokemon.height}</p>
-                        <p className={styles.specs}>weight: {pokemon.weight}</p>
-                        <p className={styles.specs}>types: {pokemon.types}</p>
-                    </div>
-                    <div className={styles.divImage}>
-                        <img src={pokemon.image} className={styles.image} alt="pokemon" />
-                    </div>
+        <div className={styles.divMain}>
+            <div className={styles.divName}>
+                <span style={nameStyle}>{pokemon.name}</span>
+            </div>
+
+            <div className={styles.divDetail}>
+                <div className={styles.divData}>
+                    <table className={styles.specs}>
+                        <tbody>
+                            <tr key='100'>
+                                <td>id</td>
+                                <td>#{pokemon.id}</td>
+                            </tr>
+                            <tr key='101'>
+                                <td>hp</td>
+                                <td>{pokemon.hp}</td>
+                            </tr>
+                            <tr key='102'>
+                                <td>attack</td>
+                                <td>{pokemon.attack}</td>
+                            </tr>
+                            <tr key='103'>
+                                <td>defense</td>
+                                <td>{pokemon.defense}</td>
+                            </tr>
+                            <tr key='104'>
+                                <td>speed</td>
+                                <td>{pokemon.speed}</td>
+                            </tr>
+                            <tr key='105'>
+                                <td>height</td>
+                                <td>{pokemon.height}</td>
+                            </tr>
+                            <tr key='106'>
+                                <td>weight</td>
+                                <td>{pokemon.weight}</td>
+                            </tr>
+                            <tr key='107'>
+                                <td>types:</td>
+                            </tr>
+                            {pokemon.types?.map((type, index) =>
+                                <tr>
+                                    <td key={index} className={styles.tdType}>{type}</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
-                <div className={styles.divButtonBack}>
-                    <Button
-                        text='back'
-                        onClick={() => navigate(-1)}
-                    />
+                <div className={styles.divImage}>
+                    <img src={pokemon.image} className={styles.image} alt="pokemon" />
                 </div>
-        </>
+            </div>
+
+            <div className={styles.divButtonBack}>
+                <Button
+                    text='back'
+                    onClick={() => navigate(-1)}
+                />
+            </div>
+        </div>
     );
 };

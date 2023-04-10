@@ -1,52 +1,79 @@
+.divMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.divName {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    padding-bottom: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.85);
+    height: 4rem;
+    width: 33rem;
+}
+
 .divDetail {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: auto;
-    padding: 1rem;
+    align-items: center;
+    width: 33rem;
 }
 
 .divData {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
+    flex-grow: 1;
     height: 100%;
-    padding: 0 3rem 2rem 3rem;
-    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem 3rem 2rem 3rem;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .divImage {
-    /* width: auto; */
+    display: flex;
     align-self: stretch;
+    align-items: center;
+    justify-content: center;
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.3);
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .specs {
-    color: rgba(230, 230, 230, 1);
-    width: 100%;
+    /* color: rgba(230, 230, 230, 1); */
+    color: rgb(158, 214, 164);
+    /* width: 100%; */
     margin: 0 0 0.3rem 0;
     font-weight: 400;
     font-size: 1rem;
     text-align: left;
 }
 
+.tdType {
+    border: 0.2rem solid;
+    border-color: black;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: black;
+    background-color: rgb(167, 194, 170);
+    height: 1.5rem;
+    width: 6rem;
+}
+
 .image {
-    /* margin: 0; */
     max-height: 200px;
-    width: auto;
-    /* object-fit: contain; */
-    /* max-width: 230px;
-    max-height: 95px; */
+    object-fit: contain;
 }
 
 .divButtonBack {
-    height: 100%;
-    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    padding-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.6);
+    /* width: 25%; */
+    padding: 1rem 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    width: 33rem;
 }
