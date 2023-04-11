@@ -13,7 +13,7 @@ export default function Nav() {
         <div className={styles.divNav}>
             <div className={styles.divImageAndMenu}>
                 <div className={styles.divImage}>
-                    <Link to='/home'>
+                    <Link to='/'>
                         <img className={styles.image} src={logo} alt='Pokémon' />
                     </Link>
                 </div>

@@ -3,12 +3,15 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    /* justify-content: space-evenly; */
     justify-content: center;
     width: 80%;
     margin: auto;
-    /* margin-bottom: 10px;
-    background-color: whitesmoke;
-    box-shadow: 10px 10px 15px rgba(129, 129, 129, 0.5);
-    border-radius: 0.5rem; */
+}
+
+.divLoading {
+    background-color: rgb(24, 27, 29);
+    background-size: fill;
+    height: 66.8vh;
+    padding: 7rem;
+    margin: auto;
 }

@@ -5,6 +5,7 @@ const initialState = {
     allPokemons: [],        // All pokemons
     allTypeNames: [],       // All pokemons type names
     currentPage: 1,         // For paginating. Must be visible to Filterning, Cards, and Paging
+    allPokemonsLoaded: false,  // Flag to check if all pokemons were loaded from backend
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -77,6 +78,7 @@ function rootReducer(state = initialState, { type, payload }) {
                 ...state,
                 selectedPokemons: payload,
                 allPokemons: payload,
+                allPokemonsLoaded: true,
             }
         case GET_TYPES:
             const typeNames = payload.map(type => type.name);
