@@ -18,7 +18,7 @@ DONE ---- 6. FRONT: Form page to create new pokemon on DB (and redux states).
 DONE ---- 7. FRONT: Paging (12 pokemons per page)
 DONE ---- 8. FRONT: Improve stylings of all components.
 DONE ---- 9. FRONT: Add a loading image in cards.
-9.1. FRONT: In search pokemon input, search when pressing enter.
+DONE ---- 9.1. FRONT: In search pokemon input, search when pressing enter.
 10. FRONT: Reset filter and order criteria when searching a pokemon.
 11. FRONT: Validate name length on creation.
 

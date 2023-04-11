@@ -18,9 +18,12 @@ export default function Nav() {
                     </Link>
                 </div>
                 <div className={styles.divMenuButtons}>
-                    <Link to='/home'>
-                        <Button text='home' />
-                    </Link>
+                    {location.pathname !== '/home' ?
+                        <Link to='/home'>
+                            <Button text='home' />
+                        </Link>
+                        : null
+                    }
                     <Link to='/about'>
                         <Button text='about' />
                     </Link>

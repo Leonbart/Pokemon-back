@@ -19,6 +19,22 @@ export default function SearchBar() {
       setpokeIDorName(e.target.value);
    };
 
+   const handleKeyDown = (e) => {
+      console.log(e.keyCode);
+      if (e.keyCode === 13) handleSearch();
+   };
+
+   const handleSearch = () => {
+      if (pokeIDorName !== '') {
+         // Check if Id or Name to choose the action to dispatch
+         let nameOrId = isIDorName(pokeIDorName);
+         if (nameOrId === 'name') dispatch(searchPokemonByName(pokeIDorName.toLocaleLowerCase()))
+         else if (nameOrId === 'id') dispatch(searchPokemonById(pokeIDorName.toLocaleLowerCase()));
+
+         setpokeIDorName('');
+      }
+   }
+
 
    return (
       <div className={styles.divSearch}>
@@ -30,21 +46,13 @@ export default function SearchBar() {
                // placeholder='id or name...'
                value={pokeIDorName}
                onChange={handleChange}
+               onKeyDown={handleKeyDown}
             />
          </div>
          <div className={`${styles.searchColumn} ${styles.searchButton}`}>
             <Button
                text='Search'
-               onClick={() => {
-                  if (pokeIDorName !== '') {
-                     // Check if Id or Name to choose the action to dispatch
-                     let nameOrId = isIDorName(pokeIDorName);
-                     if (nameOrId === 'name') dispatch(searchPokemonByName(pokeIDorName.toLocaleLowerCase()))
-                     else if (nameOrId === 'id') dispatch(searchPokemonById(pokeIDorName.toLocaleLowerCase()));
-
-                     setpokeIDorName('');
-                  }
-               }}
+               onClick={handleSearch}
             />
          </div>
       </div>
