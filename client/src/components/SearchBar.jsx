@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import styles from './SearchBar.module.css';
 import Button from './Button';
 import { searchPokemonByName, searchPokemonById } from '../redux/actions/index.js';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function SearchBar() {
    const [pokeIDorName, setpokeIDorName] = useState(''); // contents of search input
    const dispatch = useDispatch();
+   const navigate = useNavigate();
 
    const isIDorName = (val) => {
       // if val has any number, return 'id'
@@ -21,7 +23,6 @@ export default function SearchBar() {
    };
 
    const handleKeyDown = (e) => {
-      console.log(e.keyCode);
       if (e.keyCode === 13) handleSearch();
    };
 
@@ -29,8 +30,12 @@ export default function SearchBar() {
       if (pokeIDorName !== '') {
          // Check if Id or Name to choose the action to dispatch
          let nameOrId = isIDorName(pokeIDorName);
+
+         // set searchedPokemon redux state
          if (nameOrId === 'name') dispatch(searchPokemonByName(pokeIDorName.toLocaleLowerCase().trim()))
          else if (nameOrId === 'id') dispatch(searchPokemonById(pokeIDorName.toLocaleLowerCase().trim()));
+
+         navigate(`/search`);
 
          setpokeIDorName('');
       }

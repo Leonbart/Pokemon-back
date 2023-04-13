@@ -15,7 +15,7 @@
 
 .divImageAndMenu {
     /* flex-grow: 0; */
-    flex-basis: 20rem;
+    flex-basis: 27rem;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

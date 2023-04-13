@@ -48,7 +48,6 @@ export default function Cards() {
    return (
       <>
          {(!allPokemonsLoaded)
-            /* {(true) */
             ? <div className={styles.divLoading}>
                <img src={loadingImg} alt='Loading...'></img>
             </div>

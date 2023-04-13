@@ -1,0 +1,28 @@
+.divMainContainer {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.divCard {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* width: 80%; */
+    margin: auto;
+    padding: 1rem;
+}
+
+.divButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    min-width: 15rem;
+    width: auto;
+  }

@@ -6,6 +6,7 @@ import Cards from './components/Cards.jsx';
 import About from './components/About.jsx';
 import Detail from './components/Detail.jsx';
 import CreateForm from './components/CreateForm.jsx';
+import DisplaySearch from './components/DisplaySearch';
 
 function App() {
   let location = useLocation();
@@ -19,6 +20,7 @@ function App() {
         <Route path='/home' element={<Cards />} />;
         <Route path='/about' element={<About />} />;
         <Route path='/detail/:pokeId' element={<Detail />} />;
+        <Route path='/search' element={<DisplaySearch />} />;
         <Route path='/create' element={<CreateForm />} />;
       </Routes>
     </div>

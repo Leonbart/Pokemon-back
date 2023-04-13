@@ -10,6 +10,8 @@ const initialState = {
     selectedTypeFilter: 'all',
     selectedSourceFilter: 'all',
     selectedOrder: 'none',
+    // Searched pokemon
+    searchedPokemon: {},
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -23,13 +25,15 @@ function rootReducer(state = initialState, { type, payload }) {
             const pokemon = state.allPokemons.find(p => (p.name === payload));
             return {
                 ...state,
-                selectedPokemons: pokemon ? [pokemon] : []
+                // selectedPokemons: pokemon ? [pokemon] : []
+                searchedPokemon: pokemon ? pokemon : {}
             }
         case SEARCH_POKEMON_BY_ID:
             const pokemon2 = state.allPokemons.find(p => (p.id.toString() === payload));
             return {
                 ...state,
-                selectedPokemons: pokemon2 ? [pokemon2] : []
+                // selectedPokemons: pokemon2 ? [pokemon2] : []
+                searchedPokemon: pokemon2 ? pokemon2 : {}
             }
         case FILTER_AND_ORDER_POKEMONS:
             let filteredAndOrdered = [...state.allPokemons];
