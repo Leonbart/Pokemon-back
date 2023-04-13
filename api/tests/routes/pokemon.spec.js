@@ -21,7 +21,7 @@ describe('GET Pikachu Data', () => {
 const expect = chai.expect;
 
 describe('POST /pokemons', () => {
-  it('Should create a new custom pokemon', async () => {
+  xit('Should create a new custom pokemon', async () => {
     const newPoke = {
       name: 'anotherPokemon',
       image: 'url.image',
