@@ -61,6 +61,9 @@
     font-weight: 600;
     font-size: larger;
     text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .divSpecs {

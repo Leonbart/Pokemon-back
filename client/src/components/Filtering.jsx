@@ -1,13 +1,16 @@
 import styles from './Filtering.module.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../redux/actions/index.js';
 import Button from '../components/Button.jsx';
 
 export default function Filtering() {
-    const [selectedTypeFilter, setSelectedTypeFilter] = useState("all");
-    const [selectedSourceFilter, setSelectedSourceFilter] = useState("all");
-    const [selectedOrder, setSelectedOrder] = useState("none");
+    // const [selectedTypeFilter, setSelectedTypeFilter] = useState("all");
+    // const [selectedSourceFilter, setSelectedSourceFilter] = useState("all");
+    // const [selectedOrder, setSelectedOrder] = useState("none");
+    const selectedTypeFilter = useSelector(state => state.selectedTypeFilter);
+    const selectedSourceFilter = useSelector(state => state.selectedSourceFilter);
+    const selectedOrder = useSelector(state => state.selectedOrder);
 
     // Set types to be displayed in select from allTypeNames state.
     const types = useSelector(state => state.allTypeNames);
@@ -29,15 +32,15 @@ export default function Filtering() {
             case 'type':
                 // This intermediate assignment is done to ensure that the latest value of selectedTypeFilter (got from e.target.value) is dispatched to the action filterAndOrder. This is because we are bypassing the asynchronous nature of useState. Investigating, I found that there is an alternative way of doing this with the 'useCallback' hook, but I found it more complicated.
                 typeFilter = e.target.value;
-                setSelectedTypeFilter(typeFilter);
+                dispatch(actions.setSelectedTypeFilter(typeFilter));
                 break;
             case 'source':
                 sourceFilter = e.target.value;
-                setSelectedSourceFilter(sourceFilter);
+                dispatch(actions.setSelectedSourceFilter(sourceFilter));
                 break;
             case 'order':
                 order = e.target.value;
-                setSelectedOrder(order);
+                dispatch(actions.setSelectedOrder(order));
                 break;
             default:
         };
@@ -111,10 +114,11 @@ export default function Filtering() {
                 <Button
                     text='reset filters'
                     onClick={() => {
-                        setSelectedTypeFilter("all");
-                        setSelectedSourceFilter("all");
-                        setSelectedOrder("none");
-                        dispatch(actions.resetPokemonsFilters())
+                        dispatch(actions.setSelectedTypeFilter('all'));
+                        dispatch(actions.setSelectedSourceFilter('all'));
+                        dispatch(actions.setSelectedOrder('none'));
+                        dispatch(actions.resetPokemonsFilters());
+                        dispatch(actions.setCurrentPage(1));
                     }}
                 />
             </div>

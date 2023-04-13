@@ -1,4 +1,4 @@
-import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_AND_ORDER_POKEMONS, RESET_POKEMONS_FILTERS, GET_POKEMONS, GET_TYPES, SET_CURRENT_PAGE } from "../actions/types.js";
+import { ADD_POKEMON, SEARCH_POKEMON_BY_NAME, SEARCH_POKEMON_BY_ID, FILTER_AND_ORDER_POKEMONS, RESET_POKEMONS_FILTERS, GET_POKEMONS, GET_TYPES, SET_CURRENT_PAGE, SET_SELECTED_TYPE_FILTER, SET_SELECTED_SOURCE_FILTER, SET_SELECTED_ORDER } from "../actions/types.js";
 
 const initialState = {
     selectedPokemons: [],   // Selected pokemons to display
@@ -6,6 +6,10 @@ const initialState = {
     allTypeNames: [],       // All pokemons type names
     currentPage: 1,         // For paginating. Must be visible to Filterning, Cards, and Paging
     allPokemonsLoaded: false,  // Flag to check if all pokemons were loaded from backend
+    // Current selection and ordering parameters
+    selectedTypeFilter: 'all',
+    selectedSourceFilter: 'all',
+    selectedOrder: 'none',
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -40,7 +44,7 @@ function rootReducer(state = initialState, { type, payload }) {
             console.log('-------------------');
             // Filter by Type
             if (payload.typeFilter !== 'all') {
-                filteredAndOrdered = state.allPokemons.filter(p => p.types.includes(payload.typeFilter));
+                filteredAndOrdered = state.allPokemons.filter(p => p.types?.includes(payload.typeFilter));
             }
             // Filter by Source
             if (payload.sourceFilter !== 'all') {
@@ -90,6 +94,21 @@ function rootReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 currentPage: payload,
+            }
+        case SET_SELECTED_TYPE_FILTER:
+            return {
+                ...state,
+                selectedTypeFilter: payload,
+            }
+        case SET_SELECTED_SOURCE_FILTER:
+            return {
+                ...state,
+                selectedSourceFilter: payload,
+            }
+        case SET_SELECTED_ORDER:
+            return {
+                ...state,
+                selectedOrder: payload,
             }
 
         default:

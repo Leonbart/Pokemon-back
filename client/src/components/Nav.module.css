@@ -15,7 +15,7 @@
 
 .divImageAndMenu {
     /* flex-grow: 0; */
-    flex-basis: 27rem;
+    flex-basis: 20rem;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -66,4 +66,5 @@
 
 .createButton {
     padding: 0.5rem 0.5rem;
+    flex-shrink: 2;
 }

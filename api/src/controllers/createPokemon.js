@@ -10,7 +10,7 @@ const createPokemon = async (req, res) => {
         if (!Array.isArray(types)) return res.status(400).send('types must be an array');
         if (types.length < 1) return res.status(400).send('types array must have at least one element');
 
-        // Create newPokemon to store in DB
+        // Create newPokemon to be saved in DB
         const newPokemon = {
             image, hp, attack, defense, types
         };

@@ -19,8 +19,6 @@ DONE ---- 7. FRONT: Paging (12 pokemons per page)
 DONE ---- 8. FRONT: Improve stylings of all components.
 DONE ---- 9. FRONT: Add a loading image in cards.
 DONE ---- 9.1. FRONT: In search pokemon input, search when pressing enter.
-10. FRONT: Reset filter and order criteria when searching a pokemon.
-11. FRONT: Validate name length on creation.
 
 
 
@@ -31,4 +29,5 @@ DONE ---- 202. BACK: Refactor initial loading of pokemon's types from API to DB 
 203. BACK: Testing.
 204. FRONT: Testing.
 205. FRONT: Replace 'SEARCH' button with a magnifier icon.
-206: FRONT: Set types background colors acording to official pokedex (in card and detail)
+206: FRONT: Set types background colors according to official pokedex (in card and detail)
+207. FRONT: Validate name length on creation.

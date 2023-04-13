@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './CreateForm.module.css';
 import { useNavigate } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from './Button.jsx';
-import axios from 'axios';
 import styles from './CreateForm.module.css';
+import * as actions from '../redux/actions/index.js';
 
 export function validate(inputs) {
   let errors = {};
@@ -45,6 +45,7 @@ export function validate(inputs) {
 export default function CreateForm() {
   const allTypes = useSelector(state => state.allTypeNames);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const blankInputs = {
     name: '',
@@ -101,8 +102,11 @@ export default function CreateForm() {
         for (const [key, value] of Object.entries(inputs)) {
           if (value !== "") filteredInputs[key] = value;
         }
-        const response = await axios.post('http://localhost:3001/pokemons', filteredInputs);
-        console.log(response.data);
+
+        // Remove leading and trailing spaces from pokemon's name
+        filteredInputs.name = filteredInputs.name.trim();
+
+        dispatch(actions.addPokemon(filteredInputs));
         window.alert('Pokémon created!');
         setInputs(blankInputs);
         setErrors(blankErrors);

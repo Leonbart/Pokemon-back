@@ -7,3 +7,6 @@ export const RESET_POKEMONS_FILTERS = 'RESET_POKEMONS_FILTERS';   // Reset appli
 export const GET_POKEMONS = 'GET_POKEMONS';    // Get all Pokemons from backend into store
 export const GET_TYPES = 'GET_TYPES';    // Get all Types from backend into store
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';    // Set current page for paging
+export const SET_SELECTED_TYPE_FILTER = 'SET_SELECTED_TYPE_FILTER';
+export const SET_SELECTED_SOURCE_FILTER = 'SET_SELECTED_SOURCE_FILTER';
+export const SET_SELECTED_ORDER = 'SET_SELECTED_ORDER';

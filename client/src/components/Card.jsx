@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Card(props) {
 
    // store in types an array of html span tags for each pokemon's type (to be rendered in the card specs)
-   const types = props.types.map((t, index) => <span className={styles.specs} key={index}>{t}</span>);
+   const types = props.types?.map((t, index) => <span className={styles.specs} key={index}>{t}</span>);
 
    return (
       <Link to={`/detail/${props.id}`} style={{ textDecoration: 'none' }}>

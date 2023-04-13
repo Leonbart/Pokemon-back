@@ -15,9 +15,11 @@ export default function Detail() {
         fontWeight: '600',
         fontSize: '2rem',
         textTransform: 'capitalize',
+        wordWrap: "break-word",
     };
 
     useEffect(() => {
+        // Retrieve pokemon from backend instead of from store, in case more specs are needed
         fetch(`http://localhost:3001/pokemons/${pokeId}`)
             .then((response) => response.json())
             .then((poke) => {
@@ -66,11 +68,11 @@ export default function Detail() {
                             </tr>
                             <tr key='105'>
                                 <td>height</td>
-                                <td>{pokemon.height}</td>
+                                <td>{pokemon.height} m.</td>
                             </tr>
                             <tr key='106'>
                                 <td>weight</td>
-                                <td>{pokemon.weight}</td>
+                                <td>{pokemon.weight} kg.</td>
                             </tr>
                             <tr key='107'>
                                 <td>types:</td>

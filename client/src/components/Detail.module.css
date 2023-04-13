@@ -8,9 +8,9 @@
 .divName {
     margin-top: 2rem;
     padding-top: 1.25rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1.25rem;
     background-color: rgba(0, 0, 0, 0.85);
-    height: 4rem;
+    /* height: 4rem; */
     width: 33rem;
 }
 
