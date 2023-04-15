@@ -2,37 +2,28 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from '../redux/store/store';
+import store from '../src/redux/store/index.js'
 
-import Loader from '../components/Loader/Loader';
-import Navbar from '../components/Navbar/Navbar';
-import Card from '../components/Card/Card';
+import Navbar from '../components/Nav';
+import Nav from '../src/components/Nav.jsx';
+import Card from '../src/components/Card.jsx';
 
-describe('Loader component', () => {
-  it('Renders Loading Image in Loader Component', () => {
-    render(<Loader />);
-    const img = screen.getByAltText('Loading');
-    expect(img).toBeInTheDocument();
-  });
-});
 
 describe('Navbar component', () => {
   it('Renders All Links from Navbar Component', () => {
     render(
       <Provider store={store}>
         <BrowserRouter>
-          <Navbar />
+          <Nav />
         </BrowserRouter>
       </Provider>
     );
 
-    const homeLink = screen.getByText('HOME');
-    const createLink = screen.getByText('CREATE POKEMON');
-    const playLink = screen.getByText('WHO IS THAT POKEMON');
+    const aboutLink = screen.getByText('ABOUT');
+    const createLink = screen.getByText('NEW POKÉMON');
 
-    expect(homeLink).toBeInTheDocument();
+    expect(aboutLink).toBeInTheDocument();
     expect(createLink).toBeInTheDocument();
-    expect(playLink).toBeInTheDocument();
   });
 });
 

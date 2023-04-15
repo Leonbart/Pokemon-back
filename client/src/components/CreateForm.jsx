@@ -106,7 +106,7 @@ export default function CreateForm() {
         // Remove leading and trailing spaces from pokemon's name
         filteredInputs.name = filteredInputs.name.trim();
 
-        dispatch(actions.addPokemon(filteredInputs));
+        await dispatch(actions.addPokemon(filteredInputs));
         window.alert('Pokémon created!');
         setInputs(blankInputs);
         setErrors(blankErrors);

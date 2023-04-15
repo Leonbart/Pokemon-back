@@ -21,12 +21,12 @@ describe('GET Pikachu Data', () => {
 const expect = chai.expect;
 
 describe('POST /pokemons', () => {
-  xit('Should create a new custom pokemon', async () => {
+  it('Should create a new custom pokemon', async () => {
     const newPoke = {
-      name: 'anotherPokemon',
-      image: 'url.image',
+      name: 'tommymonf',
+      image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
       hp: 100,
-      attack: 50,
+      attack: 10,
       defense: 30,
       speed: 70,
       height: 15,
@@ -38,7 +38,7 @@ describe('POST /pokemons', () => {
 
     expect(res.status).to.equal(201);
     expect(res.body).to.be.an('object');
-    expect(res.body.name).to.equal('anotherpokemon');
+    expect(res.body.name).to.equal('tommymonf');
   });
 
   it('Should return a 400 error if pokemon name already exists', async () => {
