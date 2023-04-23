@@ -22,7 +22,7 @@ const { conn } = require('./src/db/db.js');
 const storeTypesFromAPItoDB = require('./src/db/storeTypesFromAPItoDB.js');
 const { Type } = require("./src/db/db.js");
 require('dotenv').config();
-const port = process.SERVER_PORT || 3001;
+const port = process.PORT || 3001;
 
 
 // Syncing all the models at once.
